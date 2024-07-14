@@ -1,0 +1,131 @@
+.card {
+    height: 100%;
+    transition: transform 1s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  ngb-carousel {
+    outline: none;
+  }
+  
+  .Welcome{
+    font-family: "Poppins";
+    font-size: large;
+    color: rgb(230, 225, 225);
+    font-weight: 500;
+  }
+
+  .margin{
+    margin-bottom: 50px;
+  }
+
+  .Heading{
+    font-family: "Poppins";
+    font-size: xx-large;
+    color: rgb(230, 225, 225);
+    font-weight: 700;
+  }
+
+
+  .card-img-top {
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .card-title {
+    font-family: "Poppins"; 
+    font-weight: 800;
+    font-size: 19px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-text {
+    font-family: "Poppins"; 
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 0.5rem;
+  }
+
+  cssCopy.card {
+    height: 100%;
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  ngb-carousel {
+    outline: none;
+  }
+  
+  .card-img-top {
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  
+  .knowMore{
+    font-size: smaller;
+    font-weight: 600;
+  }
+
+  .progress {
+    height: 10px;
+    margin-top: 0.3rem;
+  }
+  
+  .progress-bar {
+    background-color: #007bff;
+  }
+  
+  .img-fluid {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .batch-card {
+    max-width: 300px;
+    margin: auto;
+    transition: transform 0.2s;
+  }
+  
+  .batch-card:hover {
+    transform: scale(1.05);
+  }
+  
+  ngb-carousel {
+    outline: none;
+  }
+  
+  .card-img-top {
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 0.75rem;
+  }
+  
+  
+  .progress {
+    height: 10px;
+  }
+  
+  .progress-bar {
+    background-color: #007bff;
+  }
+
+
+

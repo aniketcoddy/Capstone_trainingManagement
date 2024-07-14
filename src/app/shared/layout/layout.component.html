@@ -1,9 +1,10 @@
 <app-admin-header></app-admin-header>
 <div class="d-flex full-height">
   <nav class="sidebar">
-    <app-admin-sidebar *ngIf="currentPanel === 'admin'"></app-admin-sidebar>
+    <!-- <app-admin-sidebar *ngIf="currentPanel === 'admin'"></app-admin-sidebar>
     <app-manager-sidebar *ngIf="currentPanel === 'manager'"></app-manager-sidebar>
-    <app-employee-sidebar *ngIf="currentPanel === 'employee'"></app-employee-sidebar>
+    <app-employee-sidebar *ngIf="currentPanel === 'employee'"></app-employee-sidebar> -->
+    <app-admin-sidebar></app-admin-sidebar>
   </nav>
   <main class="flex-grow-1 main-content">
     <router-outlet></router-outlet>

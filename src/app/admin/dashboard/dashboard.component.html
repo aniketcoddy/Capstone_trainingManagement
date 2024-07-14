@@ -1,1 +1,81 @@
-<p>this is the dashboard</p>
+<div class="container-fluid mt-3">
+  <!-- Header -->
+  <div class="row margin">
+    <div class="col-md-6">
+      <h1 class="Welcome">Welcome, You are in Administrator panel</h1>
+    </div>
+    <div class="col-md-6 text-end">
+      <h3 class="Welcome">{{ currentDate | date : "fullDate" }}</h3>
+    </div>
+  </div>
+
+  <!-- Total Courses Section -->
+  <h2 class="Heading">Total Courses</h2>
+  <div class="row margin">
+    <div class="col-12">
+      <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let courseGroup of courseGroups">
+          <div class="row">
+            <div class="col-md-4 mb-3" *ngFor="let course of courseGroup">
+              <div class="card">
+                <img
+                  [src]="course.imageUrl"
+                  class="card-img-top"
+                  [alt]="course.title"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">{{ course.title }}</h5>
+                  <p class="card-text">
+                    <small class="text-muted">
+                      <i class="bi bi-star-fill text-warning"></i>
+                      {{ course.rating }}
+                    </small>
+                    <small class="text-muted ms-2">
+                      <i class="bi bi-people-fill"></i>
+                      {{ course.headcount }} enrolled
+                    </small>
+                  </p>
+                  <div class="knowMore link-primary">Know More ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+  </div>
+
+  <!-- Total Batches Section -->
+  <h2 class="Heading">Total Batches</h2>
+  <div class="row">
+    <div class="col-12">
+      <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let batchGroup of batchGroups">
+          <div class="row">
+            <div class="col-md-4 mb-3" *ngFor="let batch of batchGroup">
+              <div class="card">
+                <img [src]="batch.imageUrl" class="card-img-top" [alt]="batch.title">
+                <div class="card-body">
+                  <h5 class="card-title">{{ batch.title }}</h5>
+                  <p class="card-text"><small><strong>Guidance :</strong> {{ batch.teacher }}</small></p>
+                  <p class="card-text"><small><strong>Duration:</strong> {{ batch.duration }} Months</small></p>
+                  <div class="d-flex flex-column">
+                    <small class="text-muted mb-1">
+                      <i class="bi bi-star-fill text-warning"></i> {{ batch.rating }}
+                    </small>
+                    <div class="progress" style="height: 18px;">
+                      <div class="progress-bar" role="progressbar" [style.width]="batch.progress + '%'" 
+                           [attr.aria-valuenow]="batch.progress" aria-valuemin="0" aria-valuemax="100">
+                        {{ batch.progress }}%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+  </div>
+</div>
