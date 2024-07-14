@@ -7,6 +7,7 @@ import { CoursesComponent } from './courses/courses.component';
 import { BatchesComponent } from './batches/batches.component';
 import { UsersComponent } from './users/users.component';
 import { ReportsComponent } from './reports/reports.component';
+//import { FilterPipe } from './filter.pipe';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ReportsComponent } from './reports/reports.component';
     CoursesComponent,
     BatchesComponent,
     UsersComponent,
-    ReportsComponent
+    ReportsComponent,
+    //FilterPipe
   ],
   imports: [
     CommonModule,
