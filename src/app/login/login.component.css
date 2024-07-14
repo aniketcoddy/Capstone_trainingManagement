@@ -1,0 +1,44 @@
+/* login.component.css */
+.black-bg {
+    background-color: black;
+  }
+  
+  .card {
+    background-color: #081f19; /* Light gray background for the card */
+    animation: mymove 3s infinite;
+  }
+  
+  @keyframes mymove {
+    50% {box-shadow: 2px 1px 44px -5px #00E3A5}
+  }
+
+  .card-title {
+    font-family: "Poppins";
+    font-size: xx-large;
+    color: rgb(230, 225, 225);
+    font-weight: 600;
+  }
+  
+  .form-label {
+   
+        font-family: "Poppins";
+        font-size: large;
+        color: rgb(230, 225, 225);
+        font-weight: 500;
+     
+  }
+  
+  .btn-primary {
+    background-color: #00E3A5; /* Bootstrap primary color */
+    border-color: #00E3A5;
+    color: black;
+    font-family: "Poppins";
+    font-size: large;
+    font-weight: 600;
+  }
+  
+  .btn-primary:hover {
+    background-color: black; /* Darker shade on hover */
+    border-color: black;
+    color: white;
+  }
