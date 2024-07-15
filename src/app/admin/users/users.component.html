@@ -1,4 +1,5 @@
 <div class="container">
+<<<<<<< HEAD
     <h2>
       <span class="small-text">Welcome Aniket! You are in the administrator panel....!</span>
       <span class="small-text" style="float: right;">Current Date: {{ currentDate | date }}</span>
@@ -106,3 +107,59 @@
     </div>
   </div>
   
+=======
+    <div class="header">
+        <div class="welcome">Welcome You are in Administrator panel</div>
+        <div class="current-date" id="currentDate">{{ currentDate | date:'longDate' }}</div>
+    </div>
+    <div class="user-management">
+        User Management
+    </div>
+    <div class="controls">
+        <button (click)="showPopup()">ADD</button>
+        <input type="text" id="searchBar" placeholder="Search Bar" (keyup)="searchUser($event)">
+    </div>
+    <table class="user-list">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="userTable">
+            <tr *ngFor="let user of users | filter:searchTerm">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role }}</td>
+                <td [ngStyle]="{'color': user.status === 'Active' ? 'green' : 'red'}">{{ user.status }}</td>
+                <td class="actions">
+                    <button class="edit" (click)="editUser(user)">Edit</button>
+                    <button class="delete" (click)="deleteUser(user)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="pagination">
+        <a href="#" *ngFor="let page of pages" (click)="changePage(page)">{{ page }}</a>
+    </div>
+</div>
+
+<!-- Popup window -->
+<div class="popup" [ngStyle]="{'display': isPopupVisible ? 'flex' : 'none'}">
+    <div class="popup-content">
+        <h2>Add/Edit User</h2>
+        <input type="text" [(ngModel)]="selectedUser.id" placeholder="User ID">
+        <input type="text" [(ngModel)]="selectedUser.name" placeholder="Name">
+        <input type="email" [(ngModel)]="selectedUser.email" placeholder="Email">
+        <input type="password" [(ngModel)]="selectedUser.password" placeholder="Password">
+        <input type="text" [(ngModel)]="selectedUser.role" placeholder="Role">
+        <button class="save" (click)="saveUser()">Save</button>
+        <button class="cancel" (click)="hidePopup()">Cancel</button>
+    </div>
+</div>
+>>>>>>> 1a333fc0138b6c8f0b6a5ed1cf1be90f5dfe21a4
