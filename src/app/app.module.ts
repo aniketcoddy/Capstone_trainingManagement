@@ -5,19 +5,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service'
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './login/login.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
     NgbModule,
     FormsModule,
     ReactiveFormsModule

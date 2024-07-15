@@ -9,16 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username: string = '';
+  email: string = '';
   password: string = '';
+  errorMessage: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
-    this.authService.login(this.username, this.password).subscribe(
+    this.authService.login(this.email, this.password).subscribe(
       (response) => {
         if (response.success) {
-          // Redirect based on user role
+          localStorage.setItem('userRole', response.role);
           switch (response.role) {
             case 'admin':
               this.router.navigate(['/admin']);
@@ -32,12 +33,12 @@ export class LoginComponent {
           }
         } else {
           // Handle login failure
-          alert('Invalid credentials');
+          this.errorMessage = 'Invalid credentials';
         }
       },
       (error) => {
         console.error('Login error', error);
-        alert('An error occurred during login');
+        this.errorMessage = 'An error occurred during login';
       }
     );
   }

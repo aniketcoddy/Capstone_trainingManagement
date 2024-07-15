@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './admin-sidebar.component.css'
 })
 export class AdminSidebarComponent {
- 
+
 }

@@ -1,30 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { LayoutComponent } from './layout/layout.component';
-import { AdminHeaderComponent } from './admin-header/admin-header.component';
-import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
-import { ManagerSidebarComponent } from './manager-sidebar/manager-sidebar.component';
-import { EmployeeSidebarComponent } from './employee-sidebar/employee-sidebar.component';
+import { HeaderComponent } from '../header/header.component';
+
 
 @NgModule({
-  declarations: [
-    LayoutComponent,
-    AdminHeaderComponent,
-    AdminSidebarComponent,
-    ManagerSidebarComponent,
-    EmployeeSidebarComponent
-  ],
+  declarations: [HeaderComponent],
   imports: [
-    CommonModule,
-    RouterModule
+    CommonModule
   ],
-  exports: [
-    LayoutComponent,
-    AdminHeaderComponent,
-    AdminSidebarComponent,
-    ManagerSidebarComponent,
-    EmployeeSidebarComponent
-  ]
+  exports : [HeaderComponent]
 })
 export class SharedModule { }

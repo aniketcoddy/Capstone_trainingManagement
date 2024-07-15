@@ -7,11 +7,18 @@ import { CoursesComponent } from './courses/courses.component';
 import { BatchesComponent } from './batches/batches.component';
 import { EnrollmentComponent } from './enrollment/enrollment.component';
 import { ReportsComponent } from './reports/reports.component';
+
+import { ManagerSidebarComponent } from '../manager-sidebar/manager-sidebar.component';
+import { ManagerPanelComponent } from '../manager-panel/manager-panel.component';
+import { HeaderComponent } from '../header/header.component';
 import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [
+    
+    ManagerPanelComponent,
+    ManagerSidebarComponent,
     DashboardComponent,
     CoursesComponent,
     BatchesComponent,

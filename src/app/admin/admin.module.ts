@@ -7,10 +7,15 @@ import { CoursesComponent } from './courses/courses.component';
 import { BatchesComponent } from './batches/batches.component';
 import { UsersComponent } from './users/users.component';
 import { ReportsComponent } from './reports/reports.component';
+import { AdminPanelComponent } from '../admin-panel/admin-panel.component';
+import { AdminSidebarComponent } from '../admin-sidebar/admin-sidebar.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [
+    AdminPanelComponent,
+    AdminSidebarComponent,
     DashboardComponent,
     CoursesComponent,
     BatchesComponent,
@@ -20,7 +25,8 @@ import { ReportsComponent } from './reports/reports.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    NgbModule
+    NgbModule,
+    SharedModule
   ]
 })
 export class AdminModule { }

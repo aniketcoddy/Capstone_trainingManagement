@@ -1,0 +1,28 @@
+.navbar {
+  height: 50px;
+  box-shadow: 0 2px 4px #00E3A5;
+  background-color: #081f19;
+  padding: 0 15px;
+}
+     
+  .headers {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: 8px;
+  }
+  .heading{
+    color: rgb(230, 225, 225);
+    font-style: normal;
+    font-size: xx-large;
+    font-family: "Funkley";
+    font-weight: 500;
+  }
+  
+  .setting{
+    margin-right: 20px;
+  }
+  
+  .button{
+    font-size: smaller;
+  }
