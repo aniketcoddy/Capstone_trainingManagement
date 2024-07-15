@@ -1,1 +1,19 @@
-<p>reports works!</p>
+<p>reports not works!</p>
+
+<div>
+    <h2>Reports</h2>
+    <div>
+      <label for="report-type">Select Report:</label>
+      <!-- <select id="report-type" [(ngModel)]="selectedReport" (change)="fetchReport()"> -->
+        <select id="report-type">
+        <option value="course-calendar">Course Calendar</option>
+        <option value="participant-requests">Participant Requests</option>
+        <option value="batch-status">Batch Status</option>
+      </select>
+    </div>
+    <!-- <div *ngIf="reportData"> -->
+        <div>
+      <!-- Display report data here -->
+    </div>
+  </div>
+  
