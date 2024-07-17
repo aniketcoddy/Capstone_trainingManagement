@@ -12,6 +12,7 @@ import { ManagerSidebarComponent } from '../manager-sidebar/manager-sidebar.comp
 import { ManagerPanelComponent } from '../manager-panel/manager-panel.component';
 import { HeaderComponent } from '../header/header.component';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     ManagerRoutingModule,
     SharedModule,
-    BatchModule
+    BatchModule,
+    FormsModule,
   ]
 })
 export class ManagerModule { }

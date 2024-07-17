@@ -10,6 +10,8 @@ import { EmployeePanelComponent } from '../employee-panel/employee-panel.compone
 import { EmployeeSidebarComponent } from '../employee-sidebar/employee-sidebar.component';
 import { HeaderComponent } from '../header/header.component';
 import { SharedModule } from '../shared/shared.module';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,9 +25,10 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
+    NgbCarouselModule,
     EmployeeRoutingModule,
-    SharedModule
-    
+    SharedModule,
+    FormsModule
   ]
 })
 export class EmployeeModule { }

@@ -1,0 +1,85 @@
+.card {
+  cursor: pointer;
+  transition: transform 0.2s;
+  background-color:#081f19;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.Welcome{
+  font-family: "Poppins";
+  font-size: large;
+  color:rgb(230, 225, 225);
+  font-weight: 700;
+}
+
+.Welcome2{
+  font-family: "Poppins";
+  font-size: x-large;
+  color:black;
+  font-weight: 700;
+}
+
+.modal-dialog {
+  display: flex;
+  align-items: center;
+  min-height: calc(100% - 1rem);
+}
+
+.input{
+  background-color: rgb(230, 225, 225);
+  color: black;
+  border: 2px solid black;
+
+}
+
+@keyframes mymove {
+  50% {box-shadow: 2px 1px 44px -5px #00E3A5}
+}
+
+
+
+.modal-content {
+  width: 100%;
+  background-color:rgb(230, 225, 225);
+  animation: mymove 3s infinite;
+}
+
+
+.Welcome1{
+  font-family: "Poppins";
+  font-size: large;
+  color: black;
+  font-weight: 700;
+}
+
+.margin {
+  margin-bottom: 50px;
+}
+
+.card-title {
+  font-family: "Poppins";
+  font-weight: 800;
+  font-size: 19px;
+  color: rgb(230, 225, 225);
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-family: "Poppins";
+  font-weight: 800;
+  font-size: 16px;
+  color: rgb(230, 225, 225);
+  margin-bottom: 0.5rem;
+}

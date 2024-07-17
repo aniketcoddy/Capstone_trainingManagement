@@ -1,1 +1,134 @@
-<p>manager dashboard works!</p>
+<div class="container mt-4">
+
+    <div class="row margin mb-4">
+        <div class="col-md-6">
+          <h1 class="Welcome">Welcome, You are in Manager Administrator panel</h1>
+        </div>
+        <div class="col-md-6 text-end">
+          <h3 class="Welcome">{{ currentDate | date : "fullDate" }}</h3>
+        </div>
+      </div>
+
+  <div class="row">
+    <!-- Column for Active Batches and Total Enrollment -->
+    <div class="col-md-6">
+      <!-- Active Batches -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Active Batches</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item Welcome1" *ngFor="let batch of activeBatches">
+            <strong>{{ batch.courseName }}</strong
+            ><br />
+            {{ batch.startDate | date }} - {{ batch.endDate | date }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- Total Enrollment -->
+      <div class="card">
+        <div class="card-header bg-success text-white">
+          <h5 class="mb-0">Total Enrollment</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li
+            class="list-group-item"
+            *ngFor="let enrollment of totalEnrollments"
+          >
+            <strong>{{ enrollment.courseName }}</strong
+            >: {{ enrollment.employeeCount }} employees
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Upcoming Batches Calendar -->
+    <div class="col-md-6">
+      <div class="card">
+        <div
+          class="card-header bg-info text-white d-flex justify-content-between align-items-center"
+        >
+          <h5 class="mb-0">Upcoming Batches</h5>
+
+          <div class="calender">
+            <button class="btn btn-sm btn-light mr-2" (click)="changeMonth(-1)">
+              &lt;
+            </button>
+
+            <select
+              [(ngModel)]="currentMonth"
+              (change)="updateCalendar()"
+              class="form-control-sm mr-2"
+            >
+              <option *ngFor="let month of months; let i = index" [value]="i">
+                {{ month }}
+              </option>
+            </select>
+
+            <select
+              [(ngModel)]="currentYear"
+              (change)="updateCalendar()"
+              class="form-control-sm mr-2"
+            >
+              <option *ngFor="let year of years" [value]="year">
+                {{ year }}
+              </option>
+            </select>
+
+            <button class="btn btn-sm btn-light" (click)="changeMonth(1)">
+              &gt;
+            </button>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="calendar">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Sun</th>
+
+                    <th>Mon</th>
+
+                    <th>Tue</th>
+
+                    <th>Wed</th>
+
+                    <th>Thu</th>
+
+                    <th>Fri</th>
+
+                    <th>Sat</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let week of calendarDays">
+                    <td
+                      *ngFor="let day of week"
+                      [ngClass]="{
+                        'bg-light': !day.inMonth,
+                        'bg-success': day.isBatchStart,
+                        'bg-danger': day.isBatchEnd
+                      }"
+                    >
+                      {{ day.date }}
+                      <div
+                        *ngIf="day.isBatchStart || day.isBatchEnd"
+                        class="small"
+                      >
+                        {{ day.batchInfo }}
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

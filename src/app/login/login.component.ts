@@ -1,7 +1,6 @@
-// login.component.ts
 import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,34 +10,30 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   email: string = '';
   password: string = '';
-  errorMessage: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   onSubmit() {
     this.authService.login(this.email, this.password).subscribe(
-      (response) => {
-        if (response.success) {
-          localStorage.setItem('userRole', response.role);
-          switch (response.role) {
-            case 'admin':
-              this.router.navigate(['/admin']);
-              break;
-            case 'manager':
-              this.router.navigate(['/manager']);
-              break;
-            case 'employee':
-              this.router.navigate(['/employee']);
-              break;
-          }
-        } else {
-          // Handle login failure
-          this.errorMessage = 'Invalid credentials';
+      () => {
+        const role = this.authService.getRole();
+        switch (role) {
+          case 'Admin':
+            this.router.navigate(['/admin']);
+            break;
+          case 'Manager':
+            this.router.navigate(['/manager']);
+            break;
+          case 'Employee':
+            this.router.navigate(['/employee']);
+            break;
+          default:
+            console.error('Unknown role');
         }
       },
-      (error) => {
-        console.error('Login error', error);
-        this.errorMessage = 'An error occurred during login';
+      error => {
+        console.error('Login failed', error);
+        // Handle login error (e.g., show error message)
       }
     );
   }

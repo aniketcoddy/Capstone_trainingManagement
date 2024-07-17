@@ -46,7 +46,7 @@ export class DashboardComponent implements OnInit {
     const courseTitle = [
       'Android App Development',
       'Data Science Course',
-      'Human Resource Management Course',
+      'Human Resource Course',
       'Core Java',
       'Machine Learning',
       'Programming With Python'
