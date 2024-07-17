@@ -14,6 +14,10 @@ import { HeaderComponent } from '../header/header.component';
 import { SharedModule } from '../shared/shared.module';
 
 
+import { FormsModule } from '@angular/forms';
+import { NgbModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 @NgModule({
   declarations: [
     
@@ -28,7 +32,10 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     ManagerRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    NgbDatepickerModule,
+    NgbModule
   ]
 })
 export class ManagerModule { }
