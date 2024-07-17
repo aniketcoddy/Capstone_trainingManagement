@@ -13,17 +13,17 @@ export class ManagerPanelComponent {
   constructor(private router: Router, private cdRef: ChangeDetectorRef) {}
 
   ngOnInit() {
-    console.log('LayoutComponent ngOnInit called');
+    // console.log('LayoutComponent ngOnInit called');
     this.router.events.subscribe((event) => {
-      console.log('Router event:', event);
+      // console.log('Router event:', event);
       if (event instanceof NavigationEnd) {
         this.currentPanel = event.url.split('/')[1];
-        console.log('Current panel set to:', this.currentPanel);
+        // console.log('Current panel set to:', this.currentPanel);
         // Force change detection
         this.cdRef.detectChanges();
       }
     });
     // Log initial route
-    console.log('Initial route:', this.router.url);
+    // console.log('Initial route:', this.router.url);
   }
 }

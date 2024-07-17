@@ -213,8 +213,8 @@ color: black;
 }
 
 .course-details {
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
+  background-color:  black;
+  border: 1px solid  black;
   border-radius: 0.25rem;
   padding: 1rem;
   margin-top: 1rem;
@@ -222,6 +222,20 @@ color: black;
   z-index: 10;
 }
 
+
+.Welcome{
+  font-family: "Poppins";
+  font-size: large;
+  color: rgb(230, 225, 225);
+  font-weight: 500;
+}
+
+.Welcome1{
+  font-family: "Poppins";
+  font-size: small;
+  color: rgb(230, 225, 225);
+  font-weight: 500;
+}
 .course-carousel ::ng-deep .carousel-item {
   transition: transform 0.6s ease-in-out;
 }

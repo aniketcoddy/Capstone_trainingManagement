@@ -13,6 +13,13 @@ ngb-carousel {
   font-weight: 500;
 }
 
+.Welcome1{
+  font-family: "Poppins";
+  font-size: small;
+  color: rgb(230, 225, 225);
+  font-weight: 500;
+}
+
 .margin{
   margin-bottom: 50px;
 }
@@ -126,14 +133,16 @@ ngb-carousel {
 .card-title {
   font-family: "Poppins"; 
   font-weight: 800;
-  font-size: 19px;
   color:rgb(230, 225, 225);
+  font-size: 19px;
   margin-bottom: 0.5rem;
 }
+
 
 .card-text {
   font-family: "Poppins"; 
   font-weight: 800;
+  color:rgb(230, 225, 225);
   font-size: 16px;
   margin-bottom: 0.5rem;
 }
@@ -207,7 +216,29 @@ color: black;
 
 /* Add these new styles */
 .course-carousel {
-padding: 20px 50px; /* Add padding to make room for arrows */
+padding: 0 50px 40px; /* Add padding to make room for arrows */
+}
+
+.course-details {
+background-color: black;
+border: 1px solid black;
+border-radius: 0.25rem;
+padding: 1rem;
+margin-top: 1rem;
+position: absolute;
+z-index: 10;
+}
+
+.course-carousel ::ng-deep .carousel-item {
+transition: transform 0.6s ease-in-out;
+}
+
+.course-carousel ::ng-deep .carousel-item.active {
+display: block;
+}
+
+.course-carousel ::ng-deep .carousel-inner {
+overflow: visible;
 }
 
 .course-carousel ::ng-deep .carousel-control-prev,
@@ -241,6 +272,7 @@ transition: transform 0.2s;
 background-color:#081f19;
 margin: 0 10px;
 display: flex;
+
 flex-direction: column;
 }
 
@@ -268,4 +300,14 @@ margin-top: auto;
   padding: 0 30px;
 }
 
+}
+
+.enrollment-notification {
+background-color: #d4edda;
+color: #155724;
+border: 1px solid #c3e6cb;
+border-radius: 0.25rem;
+padding: 0.5rem;
+text-align: center;
+font-weight: bold;
 }
