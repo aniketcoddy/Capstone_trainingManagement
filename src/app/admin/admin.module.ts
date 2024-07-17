@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -24,6 +25,7 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     AdminRoutingModule,
     NgbModule,
     SharedModule
