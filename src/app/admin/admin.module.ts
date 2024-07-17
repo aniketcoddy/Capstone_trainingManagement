@@ -4,7 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CoursesComponent } from './courses/courses.component';
-import { BatchesComponent } from './batches/batches.component';
+import { BatchesModule } from './batches/batches.module';
 import { UsersComponent } from './users/users.component';
 import { ReportsComponent } from './reports/reports.component';
 import { AdminPanelComponent } from '../admin-panel/admin-panel.component';
@@ -18,7 +18,6 @@ import { SharedModule } from '../shared/shared.module';
     AdminSidebarComponent,
     DashboardComponent,
     CoursesComponent,
-    BatchesComponent,
     UsersComponent,
     ReportsComponent
   ],
@@ -26,7 +25,8 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     AdminRoutingModule,
     NgbModule,
-    SharedModule
+    SharedModule,
+    BatchesModule
   ]
 })
 export class AdminModule { }

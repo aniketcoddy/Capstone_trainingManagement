@@ -1,0 +1,76 @@
+<div class="container">
+  <h2>
+    <span class="small-text">Welcome User. You are in the administrator panel</span>
+    <span class="small-text" style="float: right;">Current Date: {{ currentDate | date }}</span>
+</h2>
+
+<hr>
+
+<section style="display: flex; justify-content: space-between; align-items: center;">
+    <h3><span class="small-text">Batches Management</span></h3>
+    <button class="btn btn-primary" (click)="openAddBatchModal()">Add Batch</button>
+</section>
+
+<hr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let batch of batches">
+        <td>{{ batch.name }}</td>
+        <td>{{ batch.description }}</td>
+        <td>
+          <button class="btn btn-warning text-dark" (click)="openEditBatchModal(batch)">Edit</button>
+          <button class="btn btn-danger" (click)="deleteBatch(batch.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Add/Edit Batch Modal -->
+  <div class="modal fade" id="batchModal" tabindex="-1" aria-labelledby="batchModalLabel" aria-hidden="true" #batchModal>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="batchModalLabel">{{ isEdit ? 'Edit Batch' : 'Add Batch' }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" [(ngModel)]="batchForm.name" name="name">
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <input type="text" class="form-control" id="description" [(ngModel)]="batchForm.description" name="description">
+            </div>
+            <div class="mb-3">
+              <label for="startDate" class="form-label">Start Date</label>
+              <input type="date" class="form-control" id="startDate" [(ngModel)]="batchForm.startDate" name="startDate">
+            </div>
+            <div class="mb-3">
+              <label for="endDate" class="form-label">End Date</label>
+              <input type="date" class="form-control" id="endDate" [(ngModel)]="batchForm.endDate" name="endDate">
+            </div>
+            <div class="mb-3">
+              <label for="courseId" class="form-label">Course</label>
+              <select class="form-select" id="courseId" [(ngModel)]="batchForm.courseId" name="courseId">
+                <option *ngFor="let course of courses" [value]="course.id">{{ course.name }}</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="saveBatch()">{{ isEdit ? 'Save Changes' : 'Add Batch' }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

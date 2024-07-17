@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ManagerRoutingModule } from './manager-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CoursesComponent } from './courses/courses.component';
-import { BatchesComponent } from './batches/batches.component';
+import { BatchModule } from './batches/batches.module';
 import { EnrollmentComponent } from './enrollment/enrollment.component';
 import { ReportsComponent } from './reports/reports.component';
 
@@ -21,14 +21,14 @@ import { SharedModule } from '../shared/shared.module';
     ManagerSidebarComponent,
     DashboardComponent,
     CoursesComponent,
-    BatchesComponent,
     EnrollmentComponent,
     ReportsComponent
   ],
   imports: [
     CommonModule,
     ManagerRoutingModule,
-    SharedModule
+    SharedModule,
+    BatchModule
   ]
 })
 export class ManagerModule { }
