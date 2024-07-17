@@ -1,1 +1,40 @@
-<p> manager enrollment works!</p>
+<div class="container">
+    <h2>
+        <span class="small-text">Welcome You are in administrator panel....!</span>
+        <span class="small-text" style="float: right;">Current Date: {{ currentDate | date }}</span>
+    </h2>
+
+    <hr>
+
+    <section style="display: flex; justify-content: space-between; align-items: center;">
+        <h3><span class="small-text">Enrollment Management</span></h3>
+        <input type="text" placeholder="Search Bar" [(ngModel)]="searchQuery" style="margin-left: 10px;">
+    </section>
+
+    <hr>
+
+    <section>
+        <h3><span class="small-text">Enrollment List</span></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Discription</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let course of courses">
+                    <td>{{ course.name }}</td>
+                    <td>{{ course.description }}</td>
+                    <td>
+                        <button class="reject-button" (click)="rejectCourse(course.id)">Reject</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+
+

@@ -26,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     AdminRoutingModule,
     NgbModule,
     SharedModule,
