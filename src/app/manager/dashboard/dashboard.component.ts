@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+
 
 interface CalendarDay {
   date: number;
@@ -23,14 +25,21 @@ export class DashboardComponent {
   months: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   years: number[] = [];
 
-  constructor() {
+  constructor(private authService: AuthService) {
     const currentDate = new Date();
     this.currentMonth = currentDate.getMonth();
     this.currentYear = currentDate.getFullYear();
     this.years = Array.from({length: 10}, (_, i) => this.currentYear + i);
   }
 
+
+
+  userName: string | null = null;
+  userId: number | null = null;
+
   ngOnInit(): void {
+    this.userName = this.authService.getName(); // Retrieve user name
+    this.userId = this.authService.getUserId(); // Retrieve user ID
     this.loadActiveBatches();
     this.loadTotalEnrollments();
     this.updateCalendar();

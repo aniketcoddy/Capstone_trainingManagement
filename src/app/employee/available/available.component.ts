@@ -1,5 +1,6 @@
 
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 interface Course {
   id: number;
@@ -25,9 +26,14 @@ export class AvailableComponent {
   enrolledCourses: Set<number> = new Set();
 
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef, private authService: AuthService) { }
+
+  userName: string | null = null;
+  // userId: number | null = null;
 
   ngOnInit(): void {
+    this.userName = this.authService.getName(); // Retrieve user name
+    // this.userId = this.authService.getUserId(); // Retrieve user ID
     this.generateDummyData();
   }
 

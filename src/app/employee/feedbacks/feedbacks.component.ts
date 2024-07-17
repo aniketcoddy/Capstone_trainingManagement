@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 interface Course {
   id: number;
@@ -29,9 +30,13 @@ export class FeedbacksComponent {
   selectedCourse: Course | null = null;
   feedback: Feedback = { courseId: 0, rating: 0, comment: '' };
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
+  userName: string | null = null;
+  userId: number | null = null;
 
   ngOnInit(): void {
+    this.userName = this.authService.getName(); // Retrieve user name
+    this.userId = this.authService.getUserId(); // Retrieve user ID
     this.generateDummyData();
   }
 

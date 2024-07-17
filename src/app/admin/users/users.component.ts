@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-users',
@@ -7,34 +10,60 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
   currentDate: Date = new Date();
-  users: any[] = []; // Assuming users array contains objects with fields: userId, name, email, role
+  users: any[] = []; // Assuming users array contains objects with fields: id, name, email, role
   searchQuery: string = '';
   showAddUserPopup: boolean = false;
   showEditUserPopup: boolean = false;
   newUser: any = {
-    userId: '',
+    id: '',
     name: '',
     email: '',
     password: '',
     role: '',
   };
 
-  constructor() { }
+  private userServiceUrl = 'http://localhost:5048/api/users';
+  private authServiceUrl = 'http://localhost:5134/api/authentication';
+
+  constructor(private http: HttpClient, private authService: AuthService) { }
+
+  userName: string | null = null;
+  userId: number | null = null;
 
   ngOnInit(): void {
-    // Initialize users array from API or service
-    // Example:
-    this.users = [
-      { userId: '1', name: 'Anamika', email: 'ani@123', role: 'Trainer' },
-      { userId: '2', name: 'John Doe', email: 'john@example.com', role: 'Manager' },
-      { userId: '3', name: 'Jane Smith', email: 'jane@example.com', role: 'Admin' },
-      { userId: '4', name: 'Sam Wilson', email: 'sam@example.com', role: 'Developer' }
-    ];
+    this.userName = this.authService.getName(); // Retrieve user name
+    this.userId = this.authService.getUserId(); // Retrieve user ID
+    this.loadUsers();
   }
 
-  openAddUserPopup() {
+  loadUsers(): void {
+    this.searchQuery = ''; // Clear the search query when loading all users
+    this.http.get<any[]>(`${this.userServiceUrl}`)
+      .subscribe(data => {
+        this.users = data.map(user => ({
+          ...user,
+          role: this.getRoleName(user.role)
+        }));
+      });
+  }
+
+  searchUsers(): void {
+    if (this.searchQuery.trim() === '') {
+      this.loadUsers();
+    } else {
+      this.http.get<any[]>(`${this.userServiceUrl}/search?query=${this.searchQuery}`)
+        .subscribe(data => {
+          this.users = data.map(user => ({
+            ...user,
+            role: this.getRoleName(user.role)
+          }));
+        });
+    }
+  }
+
+  openAddUserPopup(): void {
     this.newUser = {
-      userId: '',
+      id: '',
       name: '',
       email: '',
       password: '',
@@ -43,44 +72,62 @@ export class UsersComponent implements OnInit {
     this.showAddUserPopup = true;
   }
 
-  closeAddUserPopup() {
+  closeAddUserPopup(): void {
     this.showAddUserPopup = false;
   }
 
-  openEditUserPopup(user: any) {
+  openEditUserPopup(user: any): void {
     this.newUser = { ...user };
     this.showEditUserPopup = true;
   }
 
-  closeEditUserPopup() {
+  closeEditUserPopup(): void {
     this.showEditUserPopup = false;
   }
 
-  saveNewUser() {
-    // Handle saving new user to backend or service
-    // Example: Assuming adding newUser directly to users array for demonstration
-    this.users.push({ ...this.newUser });
-    this.closeAddUserPopup();
+  saveNewUser(): void {
+    this.http.post(`${this.authServiceUrl}/register`, this.newUser, { responseType: 'text' })
+      .subscribe(() => {
+        this.loadUsers();
+        this.closeAddUserPopup();
+      }, error => {
+        console.error("Error saving new user:", error);
+      });
   }
 
-  updateUser() {
-    // Update the user in the users array
-    const index = this.users.findIndex(user => user.userId === this.newUser.userId);
-    if (index !== -1) {
-      this.users[index] = { ...this.newUser };
-    }
-    this.closeEditUserPopup();
+  updateUser(): void {
+    this.http.put(`${this.authServiceUrl}/update/${this.newUser.id}`, this.newUser, { responseType: 'text' })
+      .subscribe(() => {
+        this.loadUsers();
+        this.closeEditUserPopup();
+      }, error => {
+        console.error("Error updating user:", error);
+      });
   }
 
-  editUser(user: any) {
+  deleteUser(user: any): void {
+    this.http.delete(`${this.authServiceUrl}/delete/${user.id}`, { responseType: 'text' })
+      .subscribe(() => {
+        this.loadUsers();
+      }, error => {
+        console.error("Error deleting user:", error);
+      });
+  }
+
+  editUser(user: any): void {
     this.openEditUserPopup(user);
   }
 
-  deleteUser(user: any) {
-    // Remove the user from the users array
-    const index = this.users.findIndex(u => u.userId === user.userId);
-    if (index !== -1) {
-      this.users.splice(index, 1);
+  getRoleName(roleId: number): string {
+    switch (roleId) {
+      case 1:
+        return 'Admin';
+      case 2:
+        return 'Manager';
+      case 3:
+        return 'Employee';
+      default:
+        return 'Unknown';
     }
   }
 }

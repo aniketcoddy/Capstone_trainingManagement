@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 interface Course {
   title: string;
@@ -27,9 +28,13 @@ interface Batch {
     courseGroups: Course[][] = [];
     batchGroups: Batch[][] = [];
   
-    constructor() { }
+    constructor(private authService: AuthService) { }
+    userName: string | null = null;
+    userId: number | null = null;
   
     ngOnInit(): void {
+      this.userName = this.authService.getName(); // Retrieve user name
+      this.userId = this.authService.getUserId(); // Retrieve user ID
       this.generateDummyData();
     }
   

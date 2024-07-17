@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../../services/auth.service';
+
 
 @Component({
   selector: 'app-batches',
@@ -10,9 +12,14 @@ export class BatchesComponent implements OnInit {
   currentDate: Date = new Date();
   batches: any[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
+  
+  userName: string | null = null;
+  userId: number | null = null;
 
   ngOnInit(): void {
+    this.userName = this.authService.getName(); // Retrieve user name
+    this.userId = this.authService.getUserId(); // Retrieve user ID
     this.loadBatches();
   }
 

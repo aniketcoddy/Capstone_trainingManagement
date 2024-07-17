@@ -21,13 +21,13 @@ const routes: Routes = [
     path: 'manager',
     component: ManagerPanelComponent,
     loadChildren: () => import('./manager/manager.module').then(m => m.ManagerModule),
-    canActivate: [AuthGuard, RoleGuard] // Example: Apply both AuthGuard and RoleGuard
+    // canActivate: [AuthGuard, RoleGuard] // Example: Apply both AuthGuard and RoleGuard
   },
   {
     path: 'employee',
     component: EmployeePanelComponent,
     loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule),
-    canActivate: [AuthGuard, RoleGuard] // Example: Apply only AuthGuard
+    // canActivate: [AuthGuard, RoleGuard] // Example: Apply only AuthGuard
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
