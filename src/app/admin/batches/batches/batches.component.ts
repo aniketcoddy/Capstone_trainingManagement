@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../../services/auth.service';
 
 declare var bootstrap: any;
 
@@ -16,9 +17,14 @@ export class BatchesComponent implements OnInit {
   batchForm: any = {};
   isEdit: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
+  userName: string | null = null;
+  userId: number | null = null;
+
 
   ngOnInit(): void {
+    this.userName = this.authService.getName(); // Retrieve user name
+    this.userId = this.authService.getUserId(); // Retrieve user ID
     this.loadBatches();
     this.loadCourses();
   }

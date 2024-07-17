@@ -17,14 +17,15 @@ export class LoginComponent {
     this.authService.login(this.email, this.password).subscribe(
       () => {
         const role = this.authService.getRole();
+        const userId = this.authService.getUserId(); // Get userId
         switch (role) {
-          case 'Admin':
+          case '1': // Admin
             this.router.navigate(['/admin']);
             break;
-          case 'Manager':
+          case '2': // Manager
             this.router.navigate(['/manager']);
             break;
-          case 'Employee':
+          case '3': // Employee
             this.router.navigate(['/employee']);
             break;
           default:

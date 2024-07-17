@@ -1,1 +1,33 @@
-<p>manager courses works!</p>
+<div class="container">
+    <h2>
+        <span class="small-text">Welcome Aniket. You are in the administrator panel</span>
+        <span class="small-text" style="float: right;">Current Date: {{ currentDate | date }}</span>
+    </h2>
+
+    <hr>
+
+    <section style="display: flex; justify-content: space-between; align-items: center;">
+        <h3><span class="small-text">Course Management</span></h3>
+        <input type="text" placeholder="Search courses..." [(ngModel)]="searchQuery" (input)="searchCourses()" style="margin-left: 10px;">
+    </section>
+
+    <hr>
+
+    <section>
+        <h3><span class="small-text">Course List</span></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let course of filteredCourses">
+                    <td>{{ course.name }}</td>
+                    <td>{{ course.description }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>

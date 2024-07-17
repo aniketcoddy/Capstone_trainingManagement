@@ -13,6 +13,8 @@ import { ManagerPanelComponent } from '../manager-panel/manager-panel.component'
 import { HeaderComponent } from '../header/header.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     BatchModule,
     FormsModule,
+    HttpClientModule
   ]
 })
 export class ManagerModule { }

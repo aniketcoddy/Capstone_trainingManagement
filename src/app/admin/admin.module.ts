@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -10,6 +11,8 @@ import { ReportsComponent } from './reports/reports.component';
 import { AdminPanelComponent } from '../admin-panel/admin-panel.component';
 import { AdminSidebarComponent } from '../admin-sidebar/admin-sidebar.component';
 import { SharedModule } from '../shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -26,7 +29,9 @@ import { SharedModule } from '../shared/shared.module';
     AdminRoutingModule,
     NgbModule,
     SharedModule,
-    BatchesModule
+    BatchesModule,
+    FormsModule,
+    HttpClientModule
   ]
 })
 export class AdminModule { }

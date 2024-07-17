@@ -1,42 +1,55 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
+import {jwtDecode} from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://localhost:7052/api/authentication';
-  private jwtHelper = new JwtHelperService();
+  private apiUrl = 'http://localhost:5134/api/authentication'; // Replace with your API URL
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, { email, password })
-      .pipe(
-        tap((response: any) => {
-          localStorage.setItem('token', response.token);
-        })
-      );
+  login(email: string, password: string) {
+    return this.http.post<any>(`${this.apiUrl}/login`, { email, password }).pipe(
+      tap(response => {
+        localStorage.setItem('token', response.token);
+      })
+    );
   }
 
   logout() {
     localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 
-  isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
-    return !this.jwtHelper.isTokenExpired(token);
+  isLoggedIn() {
+    return !!localStorage.getItem('token');
   }
 
   getRole(): string | null {
     const token = localStorage.getItem('token');
-    if (token) {
-      const decodedToken = this.jwtHelper.decodeToken(token);
-      return decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-    }
-    return null;
+    if (!token) return null;
+
+    const decodedToken: any = jwtDecode(token);
+    return decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+  }
+
+  getUserId(): number | null {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+
+    const decodedToken: any = jwtDecode(token);
+    return decodedToken['UserId'];
+  }
+
+  getName(): string | null {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+
+    const decodedToken: any = jwtDecode(token);
+    return decodedToken['name'];
   }
 }

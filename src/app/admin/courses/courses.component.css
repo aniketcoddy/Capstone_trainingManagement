@@ -1,0 +1,249 @@
+
+.popup {
+    background-color: #070505;
+    width: 500px;
+    border-radius: 25px;
+    border: 2px solid #1e7c48;
+    padding: 20px;
+    box-sizing: border-box; /* Ensures padding is included in width */
+  
+  
+    /* Center the popup */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  
+  .popup label {
+    display: block;
+    margin-bottom: 10px;
+    color: white; /* Example color adjustment */
+   
+  }
+  
+  
+  
+  
+  
+  .popup input[type="date"]
+    {
+        width: calc(72% - 130px); /* Adjust width based on label width */
+        padding: 5px;
+        border-radius: 4px;
+       
+    }
+  
+  
+  .popup-buttons {
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  
+  th,
+  td {
+    border: 2px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  
+  .active-course {
+    color: #1e7c48;
+    font-weight: bold;
+  }
+  
+  
+  .small-text {
+    font-size: 20px;
+  }
+  
+  
+  /* Adjustments for container elements */
+  .container h2,
+  .container h3 {
+    font-size: 20px;
+    margin-bottom: 10px; /* Example margin adjustment */
+  }
+  
+  
+  .container h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  
+  .container h3 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  
+  .container h2 span,
+  .container h3 span {
+    margin-left: 10px;
+  }
+  
+  
+  
+  
+  .edit-button {
+        border: 1px solid rgb(16, 63, 151); /* Blue border for Edit button */
+        margin-right: 10px;
+    }
+   
+  .delete-button {
+        border: 1px solid rgb(180, 61, 61); /* Red border for Delete button */
+    }
+    .btn-green {
+        background-color: #1e7c48;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+   
+    .btn-red {
+        background-color: rgb(180, 61, 61);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+   
+    .btn-add:hover {
+        background-color: #1e7c48; /* Darker shade of green for hover effect */
+    }
+  
+    
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .edit-btn {
+    color: #fff;
+    background-color: #007bff;
+  }
+  
+  .delete-btn {
+    color: #fff;
+    background-color: #dc3545;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pagination span {
+    padding: 5px 10px;
+    margin: 0 2px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .pagination span:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #070505;
+    width: 500px;
+    border-radius: 25px;
+    border: 2px solid #1e7c48;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .popup label {
+    display: block;
+    margin-bottom: 10px;
+    color: rgb(255, 255, 255);
+  }
+  
+  
+
+  .popup input[type="text"],
+  .popup select,
+  .popup textarea {
+    width: calc(100% - 40px);
+    height: 50px;
+    margin-bottom: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid white;
+    background-color: white;
+    
+  }
+
+.popup input[type="date"] {
+  width: calc(72% - 130px);
+  padding: 5px;
+  border-radius: 4px;
+  color: black; /* Adjusted text color */
+}
+
+  
+  .popup-buttons {
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th,
+  td {
+    border: 2px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .active-course{
+    color: #1e7c48;
+    font-weight: bold;
+  }
+  
+  .small-text {
+    font-size: 20px;
+  }
+  
+  /* Adjustments for container elements */
+  .container h2,
+  .container h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  /* Add styles for inactive users if needed */
+  .inactive-course {
+    color: gray;
+    font-weight: normal;
+  }
+  
+  
+  

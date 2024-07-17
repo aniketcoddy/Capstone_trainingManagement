@@ -5,6 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BatchesComponent } from './batches/batches.component';
 import { BatchRoutingModule } from './batch-routing.module';
 import { DatePipe } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -13,7 +15,8 @@ import { DatePipe } from '@angular/common';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    BatchRoutingModule
+    BatchRoutingModule,
+    HttpClientModule
   ],
   providers: [DatePipe],
 })
