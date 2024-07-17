@@ -1,0 +1,371 @@
+.card {
+  height: 100%;
+  transition: transform 1s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+ngb-carousel {
+  outline: none;
+}
+
+.Welcome {
+  font-family: "Poppins";
+  font-size: large;
+  color: rgb(230, 225, 225);
+  font-weight: 600;
+}
+
+
+.margin {
+  margin-bottom: 50px;
+}
+
+.Heading {
+  font-family: "Poppins";
+  font-size: x-large;
+  color: rgb(230, 225, 225);
+  font-weight: 700;
+}
+
+.card-img-top {
+  height: 150px;
+  object-fit: cover;
+}
+
+
+
+.card-title {
+  font-family: "Poppins";
+  font-weight: 800;
+  font-size: 19px;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 0.5rem;
+}
+
+cssCopy.card {
+  height: 100%;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+ngb-carousel {
+  outline: none;
+}
+
+.card-img-top {
+  height: 150px;
+  object-fit: cover;
+}
+
+
+.knowMore {
+  font-size: smaller;
+  font-weight: 600;
+}
+
+.progress {
+  height: 10px;
+  margin-top: 0.3rem;
+}
+
+.progress-bar {
+  background-color: #007bff;
+}
+
+.img-fluid {
+  height: 100%;
+  object-fit: cover;
+}
+
+.batch-card {
+  max-width: 300px;
+  margin: auto;
+  transition: transform 0.2s;
+}
+
+.batch-card:hover {
+  transform: scale(1.05);
+}
+
+ngb-carousel {
+  outline: none;
+}
+
+.card-img-top {
+  height: 150px;
+  object-fit: cover;
+}
+
+
+
+.progress {
+  height: 10px;
+}
+
+.progress-bar {
+  background-color: #007bff;
+}
+
+.upcomming {
+  width: 100vh;
+  height: fit-content;
+}
+
+.gap {
+  gap: 15px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+ngb-carousel {
+  outline: none;
+}
+
+
+.margin {
+  margin-bottom: 50px;
+}
+
+.Heading {
+  font-family: "Poppins";
+  font-size: xx-large;
+  color: rgb(230, 225, 225);
+  font-weight: 700;
+}
+
+cssCopy.card {
+  height: 100%;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+ngb-carousel {
+  outline: none;
+}
+
+.knowMore {
+  font-size: smaller;
+  font-weight: 600;
+}
+
+.progress {
+  height: 10px;
+  margin-top: 0.3rem;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.progress-bar {
+  background-color: #007bff;
+}
+
+.img-fluid {
+  height: 100%;
+  object-fit: cover;
+}
+
+.batch-card {
+  max-width: 300px;
+  margin: auto;
+  transition: transform 0.2s;
+}
+
+.batch-card:hover {
+  transform: scale(1.05);
+}
+
+ngb-carousel {
+  outline: none;
+}
+
+.progress {
+  height: 10px;
+}
+
+.progress-bar {
+  background-color: #007bff;
+}
+
+.details {
+  color: black;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+ngb-carousel {
+  outline: none;
+}
+
+.margin {
+  margin-bottom: 50px;
+}
+
+.Heading {
+  font-family: "Poppins";
+  font-size: xx-large;
+  color: rgb(230, 225, 225);
+  font-weight: 700;
+}
+
+.card-title {
+  font-family: "Poppins";
+  font-weight: 800;
+  font-size: 19px;
+  color: rgb(230, 225, 225);
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-family: "Poppins";
+  font-weight: 800;
+  color: rgb(230, 225, 225);
+  font-size: 16px;
+  margin-bottom: 0.5rem;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+ngb-carousel {
+  outline: none;
+}
+
+.knowMore {
+  font-size: smaller;
+  font-weight: 600;
+}
+
+.progress {
+  height: 10px;
+  margin-top: 0.3rem;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.progress-bar {
+  background-color: #007bff;
+}
+
+.img-fluid {
+  height: 100%;
+  object-fit: cover;
+}
+
+.batch-card {
+  max-width: 300px;
+  margin: auto;
+  transition: transform 0.2s;
+}
+
+.batch-card:hover {
+  transform: scale(1.05);
+}
+
+ngb-carousel {
+  outline: none;
+}
+
+.progress {
+  height: 10px;
+}
+
+.progress-bar {
+  background-color: #007bff;
+}
+
+.details {
+  color: black;
+}
+
+/* Add these new styles */
+.course-carousel {
+  padding: 30px 50px; /* Add padding to make room for arrows */
+}
+
+.course-carousel ::ng-deep .carousel-control-prev,
+.course-carousel ::ng-deep .carousel-control-next {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.course-carousel ::ng-deep .carousel-control-prev {
+  left: 0;
+}
+
+.course-carousel ::ng-deep .carousel-control-next {
+  right: 0;
+}
+
+.course-carousel ::ng-deep .carousel-control-prev-icon,
+.course-carousel ::ng-deep .carousel-control-next-icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* Modify these existing styles */
+.card {
+  height: 100%;
+  transition: transform 0.2s;
+  margin: 0px 10px;
+  background-color: #081f19;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-img-top {
+  height: 150px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+
+.list-group-item{
+  background-color:#081f19;
+  color:rgb(230, 225, 225);
+}
+
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.d-flex {
+  margin-top: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .course-carousel {
+    padding: 0 30px;
+  }
+}

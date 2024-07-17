@@ -1,1 +1,65 @@
-<p>employee feedbacks works!</p>
+<div class="container-fluid mt-3">
+    <!-- Header -->
+    <div class="row margin">
+      <div class="col-md-6">
+        <h1 class="Welcome">Welcome, You are in Employee panel</h1>
+      </div>
+      <div class="col-md-6 text-end">
+        <h3 class="Welcome">{{ currentDate | date : "fullDate" }}</h3>
+      </div>
+    </div>
+  
+    <!-- Course Cards -->
+    <div class="row margin">
+      <div class="col-md-4 mb-3" *ngFor="let course of courses">
+        <div class="card" (click)="openFeedbackForm(course)">
+          <img [src]="course.imageUrl" class="card-img-top" [alt]="course.title" />
+          <div class="card-body">
+            <h5 class="card-title">{{ course.title }}</h5>
+            <p class="card-text">
+              <small>
+                <i class="bi bi-star-fill text-warning"></i>
+                {{ course.rating }}
+              </small>
+              <small class=" ms-2 ">
+                <i class="bi bi-people-fill"></i>
+                {{ course.headcount }} enrolled
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Feedback Form Modal -->
+ <!-- Feedback Form Modal -->
+<div class="modal" tabindex="-1" [ngClass]="{'show': showFeedbackForm}" [ngStyle]="{'display': showFeedbackForm ? 'block' : 'none'}">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title Welcome2">Feedback for {{ selectedCourse?.title }}</h5>
+          <button type="button " class="btn-close " (click)="closeFeedbackForm()"></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="submitFeedback()">
+            <div class="mb-3">
+              <label for="rating" class="form-label Welcome2">Rating</label>
+              <select class="form-select Welcome1 input" id="rating" [(ngModel)]="feedback.rating" name="rating" required>
+                <option value="1">1 - Poor</option>
+                <option value="2">2 - Fair</option>
+                <option value="3">3 - Good</option>
+                <option value="4">4 - Very Good</option>
+                <option value="5">5 - Excellent</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="comment" class="form-label Welcome2">Comment</label>
+              <textarea class="form-control input" id="comment" rows="5" [(ngModel)]="feedback.comment" name="comment" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Feedback</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

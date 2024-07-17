@@ -1,0 +1,17 @@
+.small{
+    font-family: "Poppins";
+    font-size: small;
+    font-weight: 700;
+}
+
+.Welcome{
+    font-family: "Poppins";
+    font-size: large;
+    color: rgb(230, 225, 225);
+    font-weight: 500;
+  }
+
+  .calender{
+    display: flex;
+    gap: 5px;
+  }
