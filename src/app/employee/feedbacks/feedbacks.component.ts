@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { NgModel } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
 interface Course {
@@ -16,6 +15,7 @@ interface Course {
 
 interface Feedback {
   courseId: number;
+  userId: number;
   rating: number;
   comment: string;
 }
@@ -25,17 +25,15 @@ interface Feedback {
   templateUrl: './feedbacks.component.html',
   styleUrls: ['./feedbacks.component.css']
 })
-
-export class FeedbacksComponent {
+export class FeedbacksComponent implements OnInit {
 
   currentDate: Date = new Date();
-  courseGroups: Course[][] = [];
+  inactiveCourses: Course[] = [];
   showFeedbackForm: boolean = false;
   selectedCourse: Course | null = null;
-  feedback: Feedback = { courseId: 0, rating: 0, comment: '' };
+  feedback: Feedback = { courseId: 0, userId: 0, rating: 0, comment: '' };
 
   private readonly MAX_COURSES = 4;
-
   private courseImages = [
     'assets/android.png',
     'assets/ds-min.png',
@@ -47,19 +45,25 @@ export class FeedbacksComponent {
     'assets/sql-data-analytics.png',
   ];
 
-   constructor(private http: HttpClient, private cdr: ChangeDetectorRef,private authService: AuthService) { }
+  private submittedCourseIds: number[] = [];
 
-   userName: string | null = null;
-   userId: number | null = null;
- 
-   ngOnInit(): void {
-     this.userName = this.authService.getName(); // Retrieve user name
-     this.userId = this.authService.getUserId(); // Retrieve user ID
-    this.fetchCourses();
+  constructor(
+    private http: HttpClient,
+    private cdr: ChangeDetectorRef,
+    private authService: AuthService
+  ) { }
+
+  userName: string | null = null;
+  userId: number | null = null;
+
+  ngOnInit(): void {
+    this.userName = this.authService.getName(); // Retrieve user name
+    this.userId = this.authService.getUserId(); // Retrieve user ID
+    this.fetchInactiveCourses();
   }
 
-  fetchCourses(): void {
-    this.http.get<Course[]>('http://localhost:5150/api/courses').subscribe(
+  fetchInactiveCourses(): void {
+    this.http.get<Course[]>('http://localhost:5150/api/courses/inactive').subscribe(
       (courses) => {
         const limitedCourses = courses.slice(0, this.MAX_COURSES);
         const enhancedCourses = limitedCourses.map((course, index) => ({
@@ -70,24 +74,23 @@ export class FeedbacksComponent {
           rating: Math.round((Math.random() * 2 + 3) * 10) / 10,
           price: Math.floor(Math.random() * 500) + 100
         }));
-        this.courseGroups = this.chunkArray(enhancedCourses, 3);
+        this.inactiveCourses = enhancedCourses;
         this.cdr.detectChanges();
       },
       (error) => {
-        console.error('Error fetching courses:', error);
+        console.error('Error fetching inactive courses:', error);
       }
     );
   }
 
-  chunkArray(array: any[], size: number): any[][] {
-    return Array.from({ length: Math.ceil(array.length / size) }, (v, i) =>
-      array.slice(i * size, i * size + size)
-    );
-  }
-
   openFeedbackForm(course: Course): void {
+    // Check if feedback already submitted for this course
+    if (this.submittedCourseIds.includes(course.id)) {
+      // If feedback already submitted, prevent opening the form again
+      return;
+    }
     this.selectedCourse = course;
-    this.feedback = { courseId: course.id, rating: 0, comment: '' };
+    this.feedback = { courseId: course.id, userId: this.userId!, rating: 0, comment: '' };
     this.showFeedbackForm = true;
   }
 
@@ -97,8 +100,21 @@ export class FeedbacksComponent {
   }
 
   submitFeedback(): void {
-    // console.log(`Feedback submitted for course ID ${this.selectedCourse?.id}:`, this.feedback);
-    // Here you can add logic to send the feedback to a server or store it
-    this.closeFeedbackForm();
+    if (!this.selectedCourse) {
+      return;
+    }
+    // Send feedback to backend and store it in database
+    this.http.post('http://localhost:5073/api/Feedback', this.feedback).subscribe(
+      () => {
+        // On successful submission, add course ID to submitted list
+        this.submittedCourseIds.push(this.selectedCourse!.id);
+        // Remove course from inactiveCourses array
+        this.inactiveCourses = this.inactiveCourses.filter(course => course.id !== this.selectedCourse!.id);
+        this.closeFeedbackForm();
+      },
+      (error) => {
+        console.error('Error submitting feedback:', error);
+      }
+    );
   }
 }
