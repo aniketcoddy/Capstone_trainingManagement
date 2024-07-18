@@ -8,10 +8,32 @@
     font-family: "Poppins";
     font-size: large;
     color: rgb(230, 225, 225);
+    font-weight: 700;
+  }
+
+  .Welcome1{
+    font-family: "Poppins";
+    font-size:large;
+    color: rgb(230, 225, 225);
     font-weight: 500;
+  }
+
+  .Welcome3{
+    font-family: "Poppins";
+    font-size:x-large;
+    color: black;
+    font-weight: 700;
+  }
+
+  .heading{
+    color: rgb(230, 225, 225);
   }
 
   .calender{
     display: flex;
     gap: 5px;
+  }
+
+  .calender-body{
+    background-color:#081f19;
   }

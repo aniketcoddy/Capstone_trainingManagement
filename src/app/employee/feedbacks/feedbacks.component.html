@@ -11,24 +11,26 @@
   
     <!-- Course Cards -->
     <div class="row margin">
-      <div class="col-md-4 mb-3" *ngFor="let course of courses">
-        <div class="card" (click)="openFeedbackForm(course)">
-          <img [src]="course.imageUrl" class="card-img-top" [alt]="course.title" />
-          <div class="card-body">
-            <h5 class="card-title">{{ course.title }}</h5>
-            <p class="card-text">
-              <small>
-                <i class="bi bi-star-fill text-warning"></i>
-                {{ course.rating }}
-              </small>
-              <small class=" ms-2 ">
-                <i class="bi bi-people-fill"></i>
-                {{ course.headcount }} enrolled
-              </small>
-            </p>
+      <ng-container *ngFor="let courseGroup of courseGroups">
+        <div class="col-md-4 mb-3" *ngFor="let course of courseGroup">
+          <div class="card" (click)="openFeedbackForm(course)">
+            <img [src]="course.imageUrl" class="card-img-top" [alt]="course.name" />
+            <div class="card-body">
+              <h5 class="card-title">{{ course.name }}</h5>
+              <p class="card-text">
+                <small>
+                  <i class="bi bi-star-fill text-warning"></i>
+                  {{ course.rating }}
+                </small>
+                <small class="ms-2">
+                  <i class="bi bi-people-fill"></i>
+                  {{ course.headcount }} enrolled
+                </small>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </ng-container>
     </div>
   </div>
   
@@ -38,7 +40,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title Welcome2">Feedback for {{ selectedCourse?.title }}</h5>
+          <h5 class="modal-title Welcome2">Feedback for {{ selectedCourse?.name}}</h5>
           <button type="button " class="btn-close " (click)="closeFeedbackForm()"></button>
         </div>
         <div class="modal-body">

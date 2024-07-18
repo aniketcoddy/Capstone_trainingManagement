@@ -21,9 +21,9 @@
             <div class="row">
               <div class="col-md-4 mb-3" *ngFor="let batch of batchGroup">
                 <div class="card">
-                  <img [src]="batch.imageUrl" class="card-img-top" [alt]="batch.title">
+                  <img [src]="batch.imageUrl" class="card-img-top" [alt]="batch.name">
                   <div class="card-body">
-                    <h5 class="card-title">{{ batch.title }}</h5>
+                    <h5 class="card-title">{{ batch.name }}</h5>
                     <p class="card-text"><small><strong >Guidance :</strong> {{ batch.teacher }}</small></p>
                     <p class="card-text"><small><strong >Duration:</strong> {{ batch.duration }} Months</small></p>
                     <div class="d-flex flex-column">
@@ -52,7 +52,7 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item" *ngFor="let session of upcomingSessions">
                 <div class="d-flex justify-content-between align-items-center">
-                  <span>{{ session.courseName }}</span>
+                  <span>{{ session.name }}</span>
                   <span class="d-flex gap">
                     <small>Start: {{ session.startDate | date:'shortDate' }}</small><br>
                     <small>End: {{ session.endDate | date:'shortDate' }}</small>

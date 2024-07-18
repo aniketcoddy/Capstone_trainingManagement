@@ -9,7 +9,7 @@
       </div>
     </div>
   
-    <!-- Total Courses Section -->
+    
    
   
     <!-- Total Batches Section -->
@@ -21,13 +21,13 @@
             <div class="row">
               <div class="col-md-4 mb-3" *ngFor="let batch of batchGroup">
                 <div class="card">
-                  <img [src]="batch.imageUrl" class="card-img-top" [alt]="batch.title">
+                  <img [src]="batch.imageUrl" class="card-img-top" [alt]="batch.name">
                   <div class="card-body">
-                    <h5 class="card-title">{{ batch.title }}</h5>
+                    <h5 class="card-title">{{ batch.name}}</h5>
                     <p class="card-text"><small><strong>Guidance :</strong> {{ batch.teacher }}</small></p>
                     <p class="card-text"><small><strong>Duration:</strong> {{ batch.duration }} Months</small></p>
                     <div class="d-flex flex-column">
-                      <small class="text-muted mb-1">
+                      <small class=" mb-1 text-white">
                         <i class="bi bi-star-fill text-warning"></i> {{ batch.rating }}
                       </small>
                       <div class="progress" style="height: 18px;">
@@ -46,6 +46,8 @@
       </div>
     </div>
 
+
+<!-- Total Courses Section -->
     <h2 class="Heading mb-3">Recommended Courses</h2>
     <div class="row margin">
       <div class="col-12 position-relative">
@@ -57,21 +59,27 @@
                   <img
                     [src]="course.imageUrl"
                     class="card-img-top"
-                    [alt]="course.title"
+                    [alt]="course.name"
                   />
                   <div class="card-body">
-                    <h5 class="card-title">{{ course.title }}</h5>
+                    <h5 class="card-title">{{ course.name }}</h5>
                     <p class="card-text">
-                      <small class="text-muted">
+                      <small>
                         <i class="bi bi-star-fill text-warning"></i>
                         {{ course.rating }}
                       </small>
-                      <small class="text-muted ms-2">
+                      <small class="ms-2">
                         <i class="bi bi-people-fill"></i>
                         {{ course.headcount }} enrolled
                       </small>
                     </p>
-                    <div class="knowMore link-primary">Know More ></div>
+                    <div class="knowMore link-primary pointer" (click)="toggleCourseDetails(course)">Know More ></div>
+                  </div>
+                  <div *ngIf="course.showDetails" class="course-details mt-3">
+                    <h6 class="Welcome">Course Details</h6>
+                    <p class="Welcome1"><strong class="Welcome">Course :</strong> {{ course.name}}</p>
+                    <p class="Welcome1"><strong class="Welcome">Description :</strong> {{ course.description }}</p>
+                    <p class="Welcome1"><strong class="Welcome">Price :</strong> ${{ course.price }}</p>
                   </div>
                 </div>
               </div>

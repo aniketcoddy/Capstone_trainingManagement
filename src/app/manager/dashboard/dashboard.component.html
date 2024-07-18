@@ -14,11 +14,11 @@
     <div class="col-md-6">
       <!-- Active Batches -->
       <div class="card mb-4">
-        <div class="card-header bg-primary text-white">
-          <h5 class="mb-0">Active Batches</h5>
+        <div class="card-header  heading">
+          <h5 class="mb-0 Welcome3">Active Batches</h5>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item Welcome1" *ngFor="let batch of activeBatches">
+          <li class="list-group-item calender-body Welcome1" *ngFor="let batch of activeBatches">
             <strong>{{ batch.courseName }}</strong
             ><br />
             {{ batch.startDate | date }} - {{ batch.endDate | date }}
@@ -28,16 +28,16 @@
 
       <!-- Total Enrollment -->
       <div class="card">
-        <div class="card-header bg-success text-white">
-          <h5 class="mb-0">Total Enrollment</h5>
+        <div class="card-header heading">
+          <h5 class="mb-0 Welcome3">Total Enrollment</h5>
         </div>
         <ul class="list-group list-group-flush">
           <li
-            class="list-group-item"
+            class="list-group-item calender-body Welcome1"
             *ngFor="let enrollment of totalEnrollments"
           >
             <strong>{{ enrollment.courseName }}</strong
-            >: {{ enrollment.employeeCount }} employees
+            > : {{ enrollment.employeeCount }} employees
           </li>
         </ul>
       </div>
@@ -47,12 +47,12 @@
     <div class="col-md-6">
       <div class="card">
         <div
-          class="card-header bg-info text-white d-flex justify-content-between align-items-center"
+          class="card-header heading text-white d-flex justify-content-between align-items-center"
         >
-          <h5 class="mb-0">Upcoming Batches</h5>
+          <h5 class="mb-0 Welcome3">Upcoming Batches</h5>
 
           <div class="calender">
-            <button class="btn btn-sm btn-light mr-2" (click)="changeMonth(-1)">
+            <button class="btn btn-sm btn-light mr- font-weight-bold text-black" (click)="changeMonth(-1)">
               &lt;
             </button>
 
@@ -70,37 +70,37 @@
               [(ngModel)]="currentYear"
               (change)="updateCalendar()"
               class="form-control-sm mr-2"
-            >
+            >op
               <option *ngFor="let year of years" [value]="year">
                 {{ year }}
               </option>
             </select>
 
-            <button class="btn btn-sm btn-light" (click)="changeMonth(1)">
-              &gt;
+            <button class="btn btn-sm btn-light font-weight-bold text-black" (click)="changeMonth(1)">
+             <strong>&gt;</strong> 
             </button>
           </div>
         </div>
 
-        <div class="card-body">
-          <div class="calendar">
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Sun</th>
+        <div class="card-body calender-body">
+          <div class="calendar calender-body">
+            <div class="table-responsive calender-body">
+              <table class="table table-bordered calender-body">
+                <thead >
+                  <tr class="calender-body">
+                    <th class="calender-body Welcome1">Sun</th>
 
-                    <th>Mon</th>
+                    <th class="calender-body Welcome1">Mon</th>
 
-                    <th>Tue</th>
+                    <th class="calender-body Welcome1">Tue</th>
 
-                    <th>Wed</th>
+                    <th class="calender-body Welcome1">Wed</th>
 
-                    <th>Thu</th>
+                    <th class="calender-body Welcome1">Thu</th>
 
-                    <th>Fri</th>
+                    <th class="calender-body Welcome1">Fri</th>
 
-                    <th>Sat</th>
+                    <th class="calender-body Welcome1">Sat</th>
                   </tr>
                 </thead>
 
@@ -109,11 +109,11 @@
                     <td
                       *ngFor="let day of week"
                       [ngClass]="{
-                        'bg-light': !day.inMonth,
-                        'bg-success': day.isBatchStart,
+                        'bg-#081f19': !day.inMonth,
+                        'bg-warning text-black': day.isBatchStart,
                         'bg-danger': day.isBatchEnd
                       }"
-                    >
+                      class="calender-body Welcome1">
                       {{ day.date }}
                       <div
                         *ngIf="day.isBatchStart || day.isBatchEnd"

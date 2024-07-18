@@ -21,10 +21,10 @@
                     <img
                       [src]="course.imageUrl"
                       class="card-img-top"
-                      [alt]="course.title"
+                      [alt]="course.name"
                     />
                     <div class="card-body">
-                      <h5 class="card-title">{{ course.title }}</h5>
+                      <h5 class="card-title">{{ course.name }}</h5>
                       <p class="card-text">
                         <small >
                           <i class="bi bi-star-fill text-warning"></i>
@@ -41,9 +41,10 @@
                       </div>
                     </div>
                     <div *ngIf="course.showDetails" class="course-details mt-3">
-                      <h6 class="Welcome1">Course Details</h6>
-                      <p class="Welcome1"><strong>Description:</strong> {{ course.description }}</p>
-                      <p class="Welcome1"><strong>Price:</strong> ${{ course.price }}</p>
+                      <h6 class="Welcome">Course Details</h6>
+                      <p class="Welcome1"><strong class="Welcome">Course :</strong> {{ course.name }}</p>
+                      <p class="Welcome1"><strong class="Welcome">Description :</strong> {{ course.description }}</p>
+                      <p class="Welcome1"><strong class="Welcome">Price :</strong> ${{ course.price }}</p>
                     </div>
                   </div>
                   <div *ngIf="isEnrolled(course.id)" class="enrollment-notification mt-2">
