@@ -1,1 +1,31 @@
-<p>reports works!</p>
+<!-- <p>reports works!</p> -->
+
+<div class="header">
+    <div class="welcome">Welcome, You are in Reports panel</div>
+    <!-- <div class="date" id="current-date">{{ currentDate }}</div> -->
+    <div class="welcome">{{ today | date: 'fullDate' }}</div>
+  </div> 
+  <div class="report-view">
+    <h2 class="repoHeading">Report View</h2>
+    <div class="content">
+      <div class="enrolment-status">
+        <h3 class="enrollHeading">Enrolment Status</h3><br>
+        <div style="padding: 8px; margin: 8px; border-radius: 8px; color: black; background-color: aliceblue;"><ul>
+          <br><li class="contetHeading">Requested <span class="count">15</span></li><br>
+          <li class="contetHeading">Approved <span class="count">9</span></li><br>
+          <li class="contetHeading" >Not Approved <span class="count">3</span></li><br>
+          <li class="contetHeading">Pending <span class="count">4</span></li>
+        </ul>
+        </div>
+      </div>
+      <div class="calendar">
+        <p class="PickdatecontetHeading">Pick a date for view report</p>
+         <!-- <input type= "datetime" id="report-date"> -->
+         <div class="d-inline-block">
+          <ngb-datepicker [(ngModel)]="model" #d="ngbDatepicker" (dateSelect)="onDateSelect($event)"></ngb-datepicker>
+          <!-- <ngb-datepicker [(ngModel)]="model"></ngb-datepicker> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  

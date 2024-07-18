@@ -17,6 +17,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 
+import { FormsModule } from '@angular/forms';
+import { NgbModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 @NgModule({
   declarations: [
     
@@ -34,7 +38,10 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     BatchModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    NgbDatepickerModule,
+    NgbModule
   ]
 })
 export class ManagerModule { }
