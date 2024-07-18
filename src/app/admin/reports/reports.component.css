@@ -1,112 +1,77 @@
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #343a40;
+  border-bottom: 1px solid #454d55;
+  color: #ffffff;
+}
 
-body {
-    font-family: Arial, sans-serif;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    /* background-color: #0c0c0c; */
-    color:black;
-    padding: 10px;
-    background-color: aliceblue;
-  }
-  
-  .date {
-    margin: 0;
-    
-  }
-/*   
-  .welcome{
-    margin: 0;
-   
-  } */
-  .repoHeading{
-  font-family: "Poppins";
-    font-size: xx-large;
-    color: rgb(230, 225, 225);
-    font-weight: 700;}
+.welcome {
+  font-size: 18px;
+  font-weight: bold;
+}
 
-    .enrollHeading{
-        font-family: "Poppins";
-          font-size: x-large;
-          color: rgb(230, 225, 225);
-          font-weight: 500;}
+/* Report View Styles */
+.report-view {
+  padding: 20px;
+}
 
- .contetHeading{
-            font-family: "Poppins";
-              font-size:20px;
-              color :#000;
-              font-weight: 200;}
+.repoHeading {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
 
-  .welcome{
-    font-family: "Poppins";
-    font-size: large;
-    color: rgb(17, 1, 1);
-    font-weight: 500;
-  }
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-  .report-view {
-    padding: 20px;
-  }
-  
-  h2 {
-    margin-top: 0;
-  }
-  
-  .content {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .enrolment-status, .calendar {
-    border: 1px solid #000;
-    padding: 20px;
-    width: 45%;
-  }
-  
-  .enrolment-status ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .enrolment-status li {
-    display: flex;
-    justify-content: space-between;
-  }
-/*   
-  .count {
-    font-weight:bold;
-    font-size: 20px;
-  } */
+/* Enrolment Status Styles */
+.enrolment-status {
+  padding: 20px;
+  border: 1px solid #454d55;
+  border-radius: 10px;
+  background-color: #495057;
+}
 
-  .count{
-    font-family: "Poppins";
-              font-size:20px;
-              color :#000;
-              font-weight: 200;
-            padding-right: 20px;}
-  
+.enrollHeading {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
 
-   .PickdatecontetHeading{
-    font-family: "Poppins";
-    font-size:20px;
-    color: rgb(230, 225, 225);
-    font-weight: 200;
-   }
-  .calendar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .datepicker {
-    display: inline-block;
-  }
-  
-  .d-flex {
-    display: flex;
-  }
+.status-container {
+  display: flex;
+  justify-content: space-around;
+}
 
-   
+.status-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #343a40;
+  border-radius: 10px;
+  width: 150px;
+  transition: transform 0.3s ease;
+}
+
+.status-card:hover {
+  transform: scale(1.05);
+}
+
+.status-title {
+  font-size: 18px;
+  color: #ced4da;
+  margin-bottom: 10px;
+}
+
+.status-count {
+  font-size: 24px;
+  font-weight: bold;
+ 
+}

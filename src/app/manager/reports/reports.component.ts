@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-reports',
@@ -6,22 +8,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reports.component.css']
 })
 export class ReportsComponent implements OnInit {
-  today: Date; // Declare the 'today' property
-  model: any;
+  today: Date;
+  userName: string | null = null;
+  userId: number | null = null;
+  enrollmentCounts: { total: number; approved: number; notApproved: number } | null = null;
 
-  constructor() { 
+  constructor(private authService: AuthService, private http: HttpClient) {
     this.today = new Date();
   }
 
   ngOnInit(): void {
+    this.userName = this.authService.getName(); // Retrieve user name
+    this.userId = this.authService.getUserId(); // Retrieve user ID
     this.today = new Date(); // Initialize with the current date
-    this.model = { year: this.today.getFullYear(), month: this.today.getMonth() + 1, day: this.today.getDate() };
+    this.getEnrollmentCounts();
   }
 
-  onDateSelect(date: any): void {
-    this.model = date;
-    console.log('Selected date:', date);
-    // You can add more logic here to handle the selected date
+  getEnrollmentCounts(): void {
+    this.http.get<{ total: number; approved: number; notApproved: number }>('http://localhost:5175/api/enrollments/counts').subscribe(
+      (data) => {
+        this.enrollmentCounts = data;
+      },
+      (error) => {
+        console.error('Error fetching enrollment counts:', error);
+      }
+    );
   }
 }
-

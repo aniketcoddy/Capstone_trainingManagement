@@ -12,7 +12,6 @@ import { AdminPanelComponent } from '../admin-panel/admin-panel.component';
 import { AdminSidebarComponent } from '../admin-sidebar/admin-sidebar.component';
 import { SharedModule } from '../shared/shared.module';
 
-import { FormsModule } from '@angular/forms';
 import { NgbModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap'; // Import NgbDatepickerModule
 
 import { HttpClientModule } from '@angular/common/http';
