@@ -2,32 +2,39 @@
   background-color: #1e1e1e;
   color: #ffffff;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 h2 {
   color: #ffffff;
 }
 
+.Welcome{
+  font-family: "Poppins";
+  font-size: large;
+  color: rgb(230, 225, 225);
+  font-weight: 500;
+}
+
 .table {
   color: #ffffff;
-  background-color: #2c2c2c;
-  border-radius: 8px;
+  background-color:#081f19;
+  border-radius: 4px;
   overflow: hidden;
 }
 
 .table th, .table td {
-  border-color: #444444;
+  border-color: white;
   color: #ffffff; /* Text color for table cells */
 }
 
 .table thead th {
-  background-color: #3c3c3c;
+  background-color:#081f19;
   color: #ffffff; /* Text color for table header */
 }
 
 .table tbody td {
-  background-color: #2c2c2c; /* Background color for table cells */
+  background-color:#081f19; /* Background color for table cells */
 }
 .table tbody tr:nth-child(even) {
   background-color: #2a2a2a;
@@ -162,7 +169,7 @@ h2 {
  
   th,
   td {
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
   }
@@ -329,7 +336,7 @@ h2 {
  
   th,
   td {
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
   }

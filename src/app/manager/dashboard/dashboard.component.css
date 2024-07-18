@@ -1,14 +1,14 @@
 .small{
     font-family: "Poppins";
     font-size: small;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .Welcome{
     font-family: "Poppins";
     font-size: large;
     color: rgb(230, 225, 225);
-    font-weight: 700;
+    font-weight: 500;
   }
 
   .Welcome1{
@@ -20,9 +20,9 @@
 
   .Welcome3{
     font-family: "Poppins";
-    font-size:x-large;
+    font-size:large;
     color: black;
-    font-weight: 700;
+    font-weight: 500;
   }
 
   .heading{

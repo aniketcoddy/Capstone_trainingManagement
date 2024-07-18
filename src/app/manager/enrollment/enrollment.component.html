@@ -1,36 +1,42 @@
-<div class="container">
-  <h2>
-    <span class="small-text">Welcome {{userName}}, You are in administrator panel....!</span>
-    <span class="small-text" style="float: right;">Current Date: {{ currentDate | date }}</span>
-  </h2>
+<div class="container-fluid mt-3">
+  <div class="row margin">
+      <div class="col-md-6">
+        <h1 class="Welcome">Welcome {{userName}}, You are in Administrator panel</h1>
+      </div>
+      <div class="col-md-6 text-end">
+        <h3 class="Welcome">{{ currentDate | date : "fullDate" }}</h3>
+      </div>
+    </div>
+
 
   <hr>
 
-  <section style="display: flex; justify-content: space-between; align-items: center;">
-    <h3><span class="small-text">Enrollment Management</span></h3>
-    <input type="text" placeholder="Search Bar" [(ngModel)]="searchQuery" (input)="searchEnrollments()" style="margin-left: 10px;">
-  </section>
+  <section style="display: flex; justify-content: space-between; align-items: center; background-color: #081f19; padding:10px;">
+    <h3><span class="large-text">Enrollment Management</span></h3>
+    
+    <input type="text" placeholder="Search courses..." [(ngModel)]="searchQuery" (input)="searchEnrollments()" style="margin-left: 10px; border-radius: 6px; padding:5px">
+</section>
 
   <hr>
 
-  <section>
-    <h3><span class="small-text">Enrollment List</span></h3>
+  <section style="margin-bottom: 20px;">
+    <h3><span class="large-text">Enrollment List</span></h3>
     <table>
-      <thead>
-        <tr>
-          <th>User Name</th>
-          <th>Course Name</th>
-          <th>Description</th>
-          <th>Action</th>
+      <thead class="table">
+        <tr class="table-row">
+          <th class="table-row">User Name</th>
+          <th class="table-row">Course Name</th>
+          <th class="table-row">Description</th>
+          <th class="table-row">Action</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let enrollment of filteredEnrollments">
-          <td>{{ enrollment.userName }}</td>
-          <td>{{ enrollment.courseName }}</td>
-          <td>{{ enrollment.courseDescription }}</td>
-          <td>
-            <button class="reject-button" (click)="rejectCourse(enrollment.id)">Reject</button>
+          <td class="table-row">{{ enrollment.userName }}</td>
+          <td class="table-row">{{ enrollment.courseName }}</td>
+          <td class="table-row">{{ enrollment.courseDescription }}</td>
+          <td class="table-row">
+            <button class="reject-button rounded" (click)="rejectCourse(enrollment.id)">Reject</button>
           </td>
         </tr>
       </tbody>

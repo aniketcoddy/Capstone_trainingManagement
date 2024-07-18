@@ -11,7 +11,7 @@ ngb-carousel {
   font-family: "Poppins";
   font-size: large;
   color: rgb(230, 225, 225);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 
@@ -21,9 +21,9 @@ ngb-carousel {
 
 .Heading {
   font-family: "Poppins";
-  font-size: x-large;
+  font-size: large;
   color: rgb(230, 225, 225);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 
@@ -122,12 +122,6 @@ ngb-carousel {
   margin-bottom: 50px;
 }
 
-.Heading {
-  font-family: "Poppins";
-  font-size: xx-large;
-  color: rgb(230, 225, 225);
-  font-weight: 700;
-}
 
 cssCopy.card {
   height: 100%;
@@ -205,9 +199,9 @@ ngb-carousel {
 
 .Heading {
   font-family: "Poppins";
-  font-size: xx-large;
+  font-size: x-large;
   color: rgb(230, 225, 225);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .card-title {

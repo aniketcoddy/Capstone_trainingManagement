@@ -1,134 +1,134 @@
 <div class="container mt-4">
 
-    <div class="row margin mb-4">
-        <div class="col-md-6">
-          <h1 class="Welcome">Welcome {{userName}}, You are in Manager Administrator panel</h1>
-        </div>
-        <div class="col-md-6 text-end">
-          <h3 class="Welcome">{{ currentDate | date : "fullDate" }}</h3>
-        </div>
+  <div class="row margin mb-4">
+      <div class="col-md-6">
+        <h1 class="Welcome">Welcome, You are in Manager Administrator panel</h1>
       </div>
-
-  <div class="row">
-    <!-- Column for Active Batches and Total Enrollment -->
-    <div class="col-md-6">
-      <!-- Active Batches -->
-      <div class="card mb-4">
-        <div class="card-header  heading">
-          <h5 class="mb-0 Welcome3">Active Batches</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item calender-body Welcome1" *ngFor="let batch of activeBatches">
-            <strong>{{ batch.courseName }}</strong
-            ><br />
-            {{ batch.startDate | date }} - {{ batch.endDate | date }}
-          </li>
-        </ul>
-      </div>
-
-      <!-- Total Enrollment -->
-      <div class="card">
-        <div class="card-header heading">
-          <h5 class="mb-0 Welcome3">Total Enrollment</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li
-            class="list-group-item calender-body Welcome1"
-            *ngFor="let enrollment of totalEnrollments"
-          >
-            <strong>{{ enrollment.courseName }}</strong
-            > : {{ enrollment.employeeCount }} employees
-          </li>
-        </ul>
+      <div class="col-md-6 text-end">
+        <h3 class="Welcome">{{ currentDate | date : "fullDate" }}</h3>
       </div>
     </div>
 
-    <!-- Upcoming Batches Calendar -->
-    <div class="col-md-6">
-      <div class="card">
-        <div
-          class="card-header heading text-white d-flex justify-content-between align-items-center"
+<div class="row">
+  <!-- Column for Active Batches and Total Enrollment -->
+  <div class="col-md-6">
+    <!-- Active Batches -->
+    <div class="card mb-4">
+      <div class="card-header  heading">
+        <h5 class="mb-0 Welcome3">Active Batches</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item calender-body Welcome1" *ngFor="let batch of activeBatches">
+          <strong>{{ batch.courseName }}</strong
+          ><br />
+          {{ batch.startDate | date }} - {{ batch.endDate | date }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- Total Enrollment -->
+    <div class="card">
+      <div class="card-header heading">
+        <h5 class="mb-0 Welcome3">Total Enrollment</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li
+          class="list-group-item calender-body Welcome1"
+          *ngFor="let enrollment of totalEnrollments"
         >
-          <h5 class="mb-0 Welcome3">Upcoming Batches</h5>
+          <strong>{{ enrollment.courseName }}</strong
+          > : {{ enrollment.employeeCount }} employees
+        </li>
+      </ul>
+    </div>
+  </div>
 
-          <div class="calender">
-            <button class="btn btn-sm btn-light mr- font-weight-bold text-black" (click)="changeMonth(-1)">
-              &lt;
-            </button>
+  <!-- Upcoming Batches Calendar -->
+  <div class="col-md-6">
+    <div class="card">
+      <div
+        class="card-header heading text-white d-flex justify-content-between align-items-center"
+      >
+        <h5 class="mb-0 Welcome3">Upcoming Batches</h5>
 
-            <select
-              [(ngModel)]="currentMonth"
-              (change)="updateCalendar()"
-              class="form-control-sm mr-2"
-            >
-              <option *ngFor="let month of months; let i = index" [value]="i">
-                {{ month }}
-              </option>
-            </select>
+        <div class="calender">
+          <button class="btn btn-sm btn-light mr- font-weight-bold text-black" (click)="changeMonth(-1)">
+            &lt;
+          </button>
 
-            <select
-              [(ngModel)]="currentYear"
-              (change)="updateCalendar()"
-              class="form-control-sm mr-2"
-            >op
-              <option *ngFor="let year of years" [value]="year">
-                {{ year }}
-              </option>
-            </select>
+          <select
+            [(ngModel)]="currentMonth"
+            (change)="updateCalendar()"
+            class="form-control-sm mr-2"
+          >
+            <option *ngFor="let month of months; let i = index" [value]="i">
+              {{ month }}
+            </option>
+          </select>
 
-            <button class="btn btn-sm btn-light font-weight-bold text-black" (click)="changeMonth(1)">
-             <strong>&gt;</strong> 
-            </button>
-          </div>
+          <select
+            [(ngModel)]="currentYear"
+            (change)="updateCalendar()"
+            class="form-control-sm mr-2"
+          >op
+            <option *ngFor="let year of years" [value]="year">
+              {{ year }}
+            </option>
+          </select>
+
+          <button class="btn btn-sm btn-light font-weight-bold text-black" (click)="changeMonth(1)">
+           <strong>&gt;</strong> 
+          </button>
         </div>
+      </div>
 
-        <div class="card-body calender-body">
-          <div class="calendar calender-body">
-            <div class="table-responsive calender-body">
-              <table class="table table-bordered calender-body">
-                <thead >
-                  <tr class="calender-body">
-                    <th class="calender-body Welcome1">Sun</th>
+      <div class="card-body calender-body">
+        <div class="calendar calender-body">
+          <div class="table-responsive calender-body">
+            <table class="table table-bordered calender-body">
+              <thead >
+                <tr class="calender-body">
+                  <th class="calender-body Welcome1">Sun</th>
 
-                    <th class="calender-body Welcome1">Mon</th>
+                  <th class="calender-body Welcome1">Mon</th>
 
-                    <th class="calender-body Welcome1">Tue</th>
+                  <th class="calender-body Welcome1">Tue</th>
 
-                    <th class="calender-body Welcome1">Wed</th>
+                  <th class="calender-body Welcome1">Wed</th>
 
-                    <th class="calender-body Welcome1">Thu</th>
+                  <th class="calender-body Welcome1">Thu</th>
 
-                    <th class="calender-body Welcome1">Fri</th>
+                  <th class="calender-body Welcome1">Fri</th>
 
-                    <th class="calender-body Welcome1">Sat</th>
-                  </tr>
-                </thead>
+                  <th class="calender-body Welcome1">Sat</th>
+                </tr>
+              </thead>
 
-                <tbody>
-                  <tr *ngFor="let week of calendarDays">
-                    <td
-                      *ngFor="let day of week"
-                      [ngClass]="{
-                        'bg-#081f19': !day.inMonth,
-                        'bg-warning text-black': day.isBatchStart,
-                        'bg-danger': day.isBatchEnd
-                      }"
-                      class="calender-body Welcome1">
-                      {{ day.date }}
-                      <div
-                        *ngIf="day.isBatchStart || day.isBatchEnd"
-                        class="small"
-                      >
-                        {{ day.batchInfo }}
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+              <tbody>
+                <tr *ngFor="let week of calendarDays">
+                  <td
+                    *ngFor="let day of week"
+                    [ngClass]="{
+                      'bg-#081f19': !day.inMonth,
+                      'bg-warning text-black': day.isBatchStart,
+                      'bg-danger': day.isBatchEnd
+                    }"
+                    class="calender-body Welcome1">
+                    {{ day.date }}
+                    <div
+                      *ngIf="day.isBatchStart || day.isBatchEnd"
+                      class="small"
+                    >
+                      {{ day.batchInfo }}
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>

@@ -21,14 +21,14 @@
   font-family: "Poppins";
   font-size: large;
   color:rgb(230, 225, 225);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .Welcome2{
   font-family: "Poppins";
   font-size: x-large;
   color:black;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .modal-dialog {
@@ -61,7 +61,7 @@
   font-family: "Poppins";
   font-size: large;
   color: black;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .margin {

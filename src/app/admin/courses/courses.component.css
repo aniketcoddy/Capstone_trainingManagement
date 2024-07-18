@@ -101,10 +101,12 @@
   .edit-button {
         border: 1px solid rgb(16, 63, 151); /* Blue border for Edit button */
         margin-right: 10px;
+        border-radius: 5px;
     }
    
   .delete-button {
         border: 1px solid rgb(180, 61, 61); /* Red border for Delete button */
+        border-radius: 5px;
     }
     .btn-green {
         background-color: #1e7c48;
@@ -222,6 +224,13 @@
     padding: 10px;
     text-align: center;
   }
+
+  .Welcome{
+    font-family: "Poppins";
+    font-size: large;
+    color: rgb(230, 225, 225);
+    font-weight: 500;
+  }
   
   .active-course{
     color: #1e7c48;
@@ -231,6 +240,8 @@
   .small-text {
     font-size: 20px;
   }
+
+  
   
   /* Adjustments for container elements */
   .container h2,
@@ -242,8 +253,18 @@
   /* Add styles for inactive users if needed */
   .inactive-course {
     color: gray;
-    font-weight: normal;
+    font-weight: normal; 
   }
   
   
-  
+  .table{
+   margin-top: 17px;
+   margin-bottom: 22px;
+   
+  }
+
+  .table-row{
+    background-color:#081f19;
+    color: rgb(230, 225, 225);
+    font-size: small;
+  }

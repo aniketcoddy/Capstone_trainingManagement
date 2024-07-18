@@ -65,6 +65,25 @@ th {
     margin-left: 10px;
 }
 
+.Welcome{
+    font-family: "Poppins";
+    font-size: large;
+    color: rgb(230, 225, 225);
+    font-weight: 500;
+  }
+
+.table{
+    margin-top: 17px;
+    margin-bottom: 22px;
+    
+   }
+   
+   .table-row{
+     background-color:#081f19;
+     color: rgb(230, 225, 225);
+     font-size: small;
+   }
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .container {
