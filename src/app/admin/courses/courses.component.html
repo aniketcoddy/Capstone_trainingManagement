@@ -1,1 +1,106 @@
-<p>courses works!</p>
+<div class="container">
+    <h2>
+        <span class="small-text">Welcome Aniket. You are in administrator panel</span>
+        <span class="small-text" style="float: right;">Current Date: {{ currentDate | date }}</span>
+    </h2>
+
+    <hr>
+
+    <section style="display: flex; justify-content: space-between; align-items: center;">
+        <h3><span class="small-text">Course Management</span></h3>
+        <div style="margin-left: auto;">
+            <button class="btn-add" (click)="openAddCoursePopup()">Add Course</button>
+        </div>
+        <input type="text" placeholder="Search courses..." [(ngModel)]="searchQuery" style="margin-left: 10px;">
+    </section>
+
+    <hr>
+
+    <section>
+        <h3><span class="small-text">Course List</span></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Course ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let course of courses">
+                    <td>{{ course.id }}</td>
+                    <td>{{ course.name }}</td>
+                    <td>{{ course.description }}</td>
+                    <td [ngClass]="{ 'active-course': course.status === 'active', 'inactive-course': course.status === 'inactive' }">{{ course.status }}</td>
+                    <td>
+                        <button class="edit-button" (click)="openEditCoursePopup(course)">Edit</button>
+                        <button class="delete-button" (click)="deleteUser(course.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<!-- Popup for adding new course -->
+<div class="overlay" *ngIf="showAddCoursePopup">
+    <div class="popup">
+        <h3>Add New Course</h3>
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" [(ngModel)]="newCourse.name">
+        </div>
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea [(ngModel)]="newCourse.description"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Status:</label>
+            <select [(ngModel)]="newCourse.status">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Date Range:</label>
+            <input type="date" [(ngModel)]="newCourse.startDate"> -
+            <input type="date" [(ngModel)]="newCourse.endDate">
+        </div>
+        <div class="popup-buttons">
+            <button class="btn-green" (click)="saveNewCourse()">Save</button>
+            <button class="btn-red" (click)="closeAddCoursePopup()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- Popup for editing course -->
+<div class="overlay" *ngIf="showEditCoursePopup">
+    <div class="popup">
+        <h3>Edit Course</h3>
+        <div class="form-group">
+            <label>Course ID:</label>
+            <input type="text" [(ngModel)]="newCourse.id" readonly>
+        </div>
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" [(ngModel)]="newCourse.name">
+        </div>
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea [(ngModel)]="newCourse.description"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Status:</label>
+            <select [(ngModel)]="newCourse.status">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
+        </div>
+        <div class="popup-buttons">
+            <button class="btn-green" (click)="updateCourse()">Save</button>
+            <button class="btn-red" (click)="closeEditCoursePopup()">Cancel</button>
+        </div>
+    </div>
+</div>

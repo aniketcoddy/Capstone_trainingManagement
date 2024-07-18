@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service'
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { CoursesComponent } from './admin/courses/courses.component';
+
 
 
 
@@ -13,6 +15,7 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     AppComponent,
     LoginComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
@@ -28,3 +31,11 @@ import { LoginComponent } from './login/login.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
+
+   
+  
+    
+ 

@@ -17,7 +17,6 @@ import { SharedModule } from '../shared/shared.module';
     AdminPanelComponent,
     AdminSidebarComponent,
     DashboardComponent,
-    CoursesComponent,
     BatchesComponent,
     UsersComponent,
     ReportsComponent
