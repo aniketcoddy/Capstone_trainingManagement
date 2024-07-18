@@ -1,5 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
+
+interface Enrollment {
+  id: number;
+  userId: number;
+  courseId: number;
+  status: boolean;
+}
+
+interface User {
+  id: number;
+  name: string;
+}
+
+interface Course {
+  id: number;
+  name: string;
+  description: string;
+}
 
 @Component({
   selector: 'app-enrollment',
@@ -8,10 +27,13 @@ import { AuthService } from '../../services/auth.service';
 })
 export class EnrollmentComponent implements OnInit {
   currentDate: Date = new Date();
-  courses: any[] = [];
+  enrollments: Enrollment[] = [];
+  users: { [key: number]: User } = {};
+  courses: { [key: number]: Course } = {};
+  filteredEnrollments: any[] = [];
   searchQuery: string = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   userName: string | null = null;
   userId: number | null = null;
@@ -19,16 +41,77 @@ export class EnrollmentComponent implements OnInit {
   ngOnInit(): void {
     this.userName = this.authService.getName(); // Retrieve user name
     this.userId = this.authService.getUserId(); // Retrieve user ID
-    // Initialize courses array from API or service
-    this.courses = [
-      { id: 1, name: 'C#', description: 'Language', status: true },
-      { id: 2, name: 'C++', description: 'Language', status: true },
-      { id: 3, name: 'C', description: 'Language', status: true },
-      { id: 4, name: 'Python', description: 'Language', status: true }
-    ];
+
+    this.fetchEnrollments();
   }
 
-  rejectCourse(courseId: number) {
-    this.courses = this.courses.filter(course => course.id !== courseId);
+  fetchEnrollments(): void {
+    this.http.get<Enrollment[]>('http://localhost:5175/api/enrollments/active').subscribe(
+      (enrollments) => {
+        this.enrollments = enrollments.filter(enrollment => enrollment.status);
+
+        this.fetchUsersAndCourses();
+      },
+      (error) => {
+        console.error('Error fetching enrollments:', error);
+      }
+    );
+  }
+
+  fetchUsersAndCourses(): void {
+    const userIds = Array.from(new Set(this.enrollments.map(enrollment => enrollment.userId)));
+    const courseIds = Array.from(new Set(this.enrollments.map(enrollment => enrollment.courseId)));
+
+    userIds.forEach(userId => {
+      this.http.get<User>(`http://localhost:5048/api/users/${userId}`).subscribe(
+        (user) => {
+          this.users[userId] = user;
+          this.updateFilteredEnrollments();
+        },
+        (error) => {
+          console.error('Error fetching user:', error);
+        }
+      );
+    });
+
+    courseIds.forEach(courseId => {
+      this.http.get<Course>(`http://localhost:5150/api/courses/${courseId}`).subscribe(
+        (course) => {
+          this.courses[courseId] = course;
+          this.updateFilteredEnrollments();
+        },
+        (error) => {
+          console.error('Error fetching course:', error);
+        }
+      );
+    });
+  }
+
+  updateFilteredEnrollments(): void {
+    this.filteredEnrollments = this.enrollments.map(enrollment => ({
+      ...enrollment,
+      userName: this.users[enrollment.userId]?.name,
+      courseName: this.courses[enrollment.courseId]?.name,
+      courseDescription: this.courses[enrollment.courseId]?.description
+    })).filter(enrollment => 
+      enrollment.userName?.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+      enrollment.courseName?.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
+  }
+
+  rejectCourse(enrollmentId: number): void {
+    this.http.patch(`http://localhost:5175/api/enrollments/${enrollmentId}`, { status: false }).subscribe(
+      () => {
+        this.enrollments = this.enrollments.filter(enrollment => enrollment.id !== enrollmentId);
+        this.updateFilteredEnrollments();
+      },
+      (error) => {
+        console.error('Error rejecting enrollment:', error);
+      }
+    );
+  }
+
+  searchEnrollments(): void {
+    this.updateFilteredEnrollments();
   }
 }
