@@ -30,7 +30,7 @@ export class AvailableComponent implements OnInit {
   courseGroups: Course[][] = [];
   enrolledCourses: Set<number> = new Set();
 
-  private readonly MAX_COURSES = 10;
+  private readonly MAX_COURSES = 13;
 
   userName: string | null = null;
   userId: number | null = null;
@@ -117,7 +117,7 @@ export class AvailableComponent implements OnInit {
         setTimeout(() => {
           this.enrolledCourses.delete(courseId);
           this.cdr.detectChanges();
-        }, 3000); // Hide after 3 seconds
+        }, 4000); // Hide after 3 seconds
       }, error => {
         console.error('Error enrolling in course:', error);
       });

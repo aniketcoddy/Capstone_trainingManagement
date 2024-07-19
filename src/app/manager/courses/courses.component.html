@@ -1,33 +1,40 @@
-<div class="container">
-    <h2>
-        <span class="small-text">Welcome {{userName}}. You are in the Manager panel</span>
-        <span class="small-text" style="float: right;">Current Date: {{ currentDate | date }}</span>
-    </h2>
+<div class="container-fluid mt-3">
+    <div class="row margin">
+        <div class="col-md-6">
+          <h1 class="Welcome">Welcome {{userName}}, You are in Administrator panel</h1>
+        </div>
+        <div class="col-md-6 text-end">
+          <h3 class="Welcome">{{ currentDate | date : "fullDate" }}</h3>
+        </div>
+      </div>
 
     <hr>
 
-    <section style="display: flex; justify-content: space-between; align-items: center;">
-        <h3><span class="small-text">Course Management</span></h3>
-        <input type="text" placeholder="Search courses..." [(ngModel)]="searchQuery" (input)="searchCourses()" style="margin-left: 10px;">
+    <section style="display: flex; justify-content: space-between; align-items: center; background-color: #081f19; padding:10px;">
+        <h3><span class="large-text">Course Management</span></h3>
+        
+        <input type="text" placeholder="Search courses..." [(ngModel)]="searchQuery" (input)="searchCourses()" style="margin-left: 10px; border-radius: 6px; padding:5px">
     </section>
 
     <hr>
 
     <section>
-        <h3><span class="small-text">Course List</span></h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
+        <h3><span class="large-text">Course List</span></h3>
+        <table class="table">
+            <thead >
+                <tr class="table-row">
+                    <th class="table-row">Name</th>
+                    <th class="table-row">Description</th>
+                   
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let course of filteredCourses">
-                    <td>{{ course.name }}</td>
-                    <td>{{ course.description }}</td>
+                    <td class="table-row">{{ course.name }}</td>
+                    <td class="table-row">{{ course.description }}</td>
                 </tr>
             </tbody>
         </table>
     </section>
 </div>
+

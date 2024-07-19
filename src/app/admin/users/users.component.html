@@ -1,36 +1,35 @@
 <div class="container">
   <h2>
-      <span class="small-text">Welcome {{userName}}, Your are in the administrator panel!</span>
+      <span class="small-text">Welcome {{userName}}, Your are in the Administrator panel!</span>
       <span class="small-text" style="float: right;">Current Date: {{ currentDate | date }}</span>
   </h2>
   <hr>
-  <section class="controls">
-      <h3><span class="small-text">User Management</span></h3>
-      <div style="margin-left: auto;">
-          <button class="btn-add" (click)="openAddUserPopup()">Add User</button>
+  <section style="display: flex; justify-content: space-between; align-items: center; background-color: #081f19; padding:10px;">
+    <h3><span class="large-text">User Management</span></h3>
+      <div style="margin-left:auto;">
+          <button class="btn btn-primary" (click)="openAddUserPopup()">Add User</button>
       </div>
-      <input id="search-bar" type="text" placeholder="Search users..." [(ngModel)]="searchQuery" (input)="searchUsers()">
+      <input type="text" placeholder="Search courses..." [(ngModel)]="searchQuery" (input)="searchUsers()" style="margin-left: 10px; border-radius: 6px; padding:5px">
   </section>
   <hr>
   <section>
-      <h3><span class="small-text">User List</span></h3>
-      <table>
+      <h3><span class="large-text">User List</span></h3>
+      <table class="table">
           <thead>
-              <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Actions</th>
+            <tr class="table-row">
+                <th class="table-row">Name</th>
+                <th class="table-row">Email</th>
+                <th class="table-row">Role</th>
+                <th class="table-row">Actions</th>
               </tr>
           </thead>
           <tbody>
               <tr *ngFor="let user of users">
-                  <td>{{ user.name }}</td>
-                  <td>{{ user.email }}</td>
-                  <td>{{ user.role }}</td>
-                  <td>
-                      <button class="edit-button" (click)="editUser(user)">Edit</button>
-                      <button class="delete-button" (click)="deleteUser(user)">Delete</button>
+                <td class="table-row">{{ user.name }}</td>
+                <td class="table-row">{{ user.email   }}             <td class="table-row">{{ user.role }}</td>
+                <td class="table-row">
+                      <button class="edit-button mr-3 text-black bg-warning rounded" (click)="editUser(user)">Edit</button>
+                      <button class="delete-button text-white bg-danger rounded" (click)="deleteUser(user)">Delete</button>
                   </td>
               </tr>
           </tbody>

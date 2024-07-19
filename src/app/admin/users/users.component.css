@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,6 +68,18 @@ body {
     margin-bottom: 20px;
   }
   
+  .table{
+    margin-top: 17px;
+    margin-bottom: 22px;
+    
+   }
+ 
+   .table-row{
+     background-color:#081f19;
+     color: rgb(230, 225, 225);
+     font-size:16px;
+   }
+
   th, td {
     padding: 10px;
     border: 1px solid #ccc;
