@@ -73,5 +73,48 @@
 .status-count {
   font-size: 24px;
   font-weight: bold;
- 
+}
+
+/* Enrollment Details Styles */
+.enrollment-details {
+  padding: 20px;
+  border: 1px solid #454d55;
+  border-radius: 10px;
+  background-color: #495057;
+}
+
+.enrollment-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.enrollment-table th,
+.enrollment-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #454d55;
+  color: #ffffff;
+}
+
+.enrollment-table th {
+  background-color: #343a40;
+  font-size: 18px;
+}
+
+.enrollment-table td {
+  background-color: #495057;
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .status-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .status-card {
+    width: 100%;
+  }
 }

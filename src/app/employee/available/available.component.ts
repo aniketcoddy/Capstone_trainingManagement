@@ -107,7 +107,7 @@ export class AvailableComponent implements OnInit {
       this.http.post('http://localhost:5175/api/enrollments', {
         userId: this.userId,
         courseId: courseId,
-        status: true
+        status: null 
       }).subscribe(() => {
         this.enrolledCourses.add(courseId);
         this.fetchCourses(); // Refresh courses after enrolling

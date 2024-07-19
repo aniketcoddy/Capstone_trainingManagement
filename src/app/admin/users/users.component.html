@@ -1,100 +1,100 @@
 <div class="container">
-  <h2>
-      <span class="small-text">Welcome {{userName}}, Your are in the Administrator panel!</span>
+    <h2>
+      <span class="small-text">Welcome {{ userName }}, You are in the Administrator panel!</span>
       <span class="small-text" style="float: right;">Current Date: {{ currentDate | date }}</span>
-  </h2>
-  <hr>
-  <section style="display: flex; justify-content: space-between; align-items: center; background-color: #081f19; padding:10px;">
-    <h3><span class="large-text">User Management</span></h3>
+    </h2>
+    <hr>
+    <section style="display: flex; justify-content: space-between; align-items: center; background-color: #081f19; padding:10px;">
+      <h3><span class="large-text">User Management</span></h3>
       <div style="margin-left:auto;">
-          <button class="btn btn-primary" (click)="openAddUserPopup()">Add User</button>
+        <button class="btn btn-primary" (click)="openAddUserPopup()">Add User</button>
       </div>
-      <input type="text" placeholder="Search courses..." [(ngModel)]="searchQuery" (input)="searchUsers()" style="margin-left: 10px; border-radius: 6px; padding:5px">
-  </section>
-  <hr>
-  <section>
+      <input type="text" placeholder="Search users..." [(ngModel)]="searchQuery" (input)="searchUsers()" style="margin-left: 10px; border-radius: 6px; padding:5px">
+    </section>
+    <hr>
+    <section>
       <h3><span class="large-text">User List</span></h3>
       <table class="table">
-          <thead>
-            <tr class="table-row">
-                <th class="table-row">Name</th>
-                <th class="table-row">Email</th>
-                <th class="table-row">Role</th>
-                <th class="table-row">Actions</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let user of users">
-                <td class="table-row">{{ user.name }}</td>
-                <td class="table-row">{{ user.email   }}             <td class="table-row">{{ user.role }}</td>
-                <td class="table-row">
-                      <button class="edit-button mr-3 text-black bg-warning rounded" (click)="editUser(user)">Edit</button>
-                      <button class="delete-button text-white bg-danger rounded" (click)="deleteUser(user)">Delete</button>
-                  </td>
-              </tr>
-          </tbody>
+        <thead>
+          <tr class="table-row">
+            <th class="table-row">Name</th>
+            <th class="table-row">Email</th>
+            <th class="table-row">Role</th>
+            <th class="table-row">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td class="table-row">{{ user.name }}</td>
+            <td class="table-row">{{ user.email }}</td>
+            <td class="table-row">{{ user.role }}</td>
+            <td class="table-row">
+              <button class="edit-button mr-3 text-black bg-warning rounded" (click)="editUser(user)">Edit</button>
+              <button class="delete-button text-white bg-danger rounded" (click)="deleteUser(user)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
       </table>
-  </section>
-</div>
-
-<!-- Popup for adding new user -->
-<div class="overlay" *ngIf="showAddUserPopup">
-  <div class="popup">
+    </section>
+  </div>
+  
+  <!-- Popup for adding new user -->
+  <div class="overlay" *ngIf="showAddUserPopup">
+    <div class="popup">
       <h3>Add New User</h3>
       <div class="form-group">
-          <label>Name:</label>
-          <input type="text" [(ngModel)]="newUser.name">
+        <label>Name:</label>
+        <input type="text" [(ngModel)]="newUser.name">
       </div>
       <div class="form-group">
-          <label>Email:</label>
-          <input type="text" [(ngModel)]="newUser.email">
+        <label>Email:</label>
+        <input type="text" [(ngModel)]="newUser.email">
       </div>
       <div class="form-group">
-          <label>Password:</label>
-          <input type="password" [(ngModel)]="newUser.password">
+        <label>Password:</label>
+        <input type="password" [(ngModel)]="newUser.password">
       </div>
       <div class="form-group">
-          <label>Role:</label>
-          <select [(ngModel)]="newUser.role">
-              <option value="Admin">Admin</option>
-              <option value="Manager">Manager</option>
-              <option value="Employee">Employee</option>
-          </select>
+        <label>Role:</label>
+        <select [(ngModel)]="newUser.role">
+          <option value="Manager">Manager</option>
+          <option value="Employee">Employee</option>
+        </select>
       </div>
       <div class="popup-buttons">
-          <button class="btn-green" (click)="saveNewUser()">Save</button>
-          <button class="btn-red" (click)="closeAddUserPopup()">Cancel</button>
+        <button class="btn-green" (click)="saveNewUser()">Save</button>
+        <button class="btn-red" (click)="closeAddUserPopup()">Cancel</button>
       </div>
+    </div>
   </div>
-</div>
-
-<!-- Popup for editing user -->
-<div class="overlay" *ngIf="showEditUserPopup">
-  <div class="popup">
+  
+  <!-- Popup for editing user -->
+  <div class="overlay" *ngIf="showEditUserPopup">
+    <div class="popup">
       <h3>Edit User</h3>
       <div class="form-group">
-          <label>Name:</label>
-          <input type="text" [(ngModel)]="newUser.name">
+        <label>Name:</label>
+        <input type="text" [(ngModel)]="newUser.name">
       </div>
       <div class="form-group">
-          <label>Email:</label>
-          <input type="text" [(ngModel)]="newUser.email">
+        <label>Email:</label>
+        <input type="text" [(ngModel)]="newUser.email">
       </div>
       <div class="form-group">
-          <label>Password:</label>
-          <input type="password" [(ngModel)]="newUser.password">
+        <label>Password:</label>
+        <input type="password" [(ngModel)]="newUser.password">
       </div>
       <div class="form-group">
-          <label>Role:</label>
-          <select [(ngModel)]="newUser.role">
-              <option value="Admin">Admin</option>
-              <option value="Manager">Manager</option>
-              <option value="Employee">Employee</option>
-          </select>
+        <label>Role:</label>
+        <select [(ngModel)]="newUser.role">
+          <option value="Manager">Manager</option>
+          <option value="Employee">Employee</option>
+        </select>
       </div>
       <div class="popup-buttons">
-          <button class="btn-green" (click)="updateUser()">Save</button>
-          <button class="btn-red" (click)="closeEditUserPopup()">Cancel</button>
+        <button class="btn-green" (click)="updateUser()">Save</button>
+        <button class="btn-red" (click)="closeEditUserPopup()">Cancel</button>
       </div>
+    </div>
   </div>
-</div>
+  

@@ -6,7 +6,7 @@ interface Enrollment {
   id: number;
   userId: number;
   courseId: number;
-  status: boolean;
+  status: boolean | null;
 }
 
 interface User {
@@ -46,9 +46,9 @@ export class EnrollmentComponent implements OnInit {
   }
 
   fetchEnrollments(): void {
-    this.http.get<Enrollment[]>('http://localhost:5175/api/enrollments/active').subscribe(
+    this.http.get<Enrollment[]>('http://localhost:5175/api/enrollments/pending').subscribe(
       (enrollments) => {
-        this.enrollments = enrollments.filter(enrollment => enrollment.status);
+        this.enrollments = enrollments;
 
         this.fetchUsersAndCourses();
       },
@@ -99,6 +99,18 @@ export class EnrollmentComponent implements OnInit {
     );
   }
 
+  approveCourse(enrollmentId: number): void {
+    this.http.patch(`http://localhost:5175/api/enrollments/${enrollmentId}`, { status: true }).subscribe(
+      () => {
+        this.enrollments = this.enrollments.filter(enrollment => enrollment.id !== enrollmentId);
+        this.updateFilteredEnrollments();
+      },
+      (error) => {
+        console.error('Error approving enrollment:', error);
+      }
+    );
+  }
+  
   rejectCourse(enrollmentId: number): void {
     this.http.patch(`http://localhost:5175/api/enrollments/${enrollmentId}`, { status: false }).subscribe(
       () => {
@@ -110,6 +122,8 @@ export class EnrollmentComponent implements OnInit {
       }
     );
   }
+  
+  
 
   searchEnrollments(): void {
     this.updateFilteredEnrollments();

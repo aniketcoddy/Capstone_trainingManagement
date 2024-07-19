@@ -8,19 +8,39 @@
     <div class="enrolment-status">
       <h3 class="enrollHeading">Enrolment Status</h3>
       <div class="status-container">
-        <div class="status-card">
+        <div class="status-card" (click)="fetchEnrollmentDetails('requested')">
           <span class="status-title">Requested</span>
           <span class="status-count">{{ enrollmentCounts?.total }}</span>
         </div>
-        <div class="status-card">
+        <div class="status-card" (click)="fetchEnrollmentDetails('approved')">
           <span class="status-title">Approved</span>
           <span class="status-count">{{ enrollmentCounts?.approved }}</span>
         </div>
-        <div class="status-card">
+        <div class="status-card" (click)="fetchEnrollmentDetails('notApproved')">
           <span class="status-title">Not Approved</span>
           <span class="status-count">{{ enrollmentCounts?.notApproved }}</span>
         </div>
       </div>
+    </div>
+    <div class="enrollment-details">
+      <h3 class="enrollHeading">Enrollment Details</h3>
+      <table class="enrollment-table" *ngIf="enrollmentDetails.length > 0">
+        <thead>
+          <tr>
+            <th>User Name</th>
+            <th>Course Name</th>
+            <th>Course Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let detail of enrollmentDetails">
+            <td>{{ detail.userName }}</td>
+            <td>{{ detail.courseName }}</td>
+            <td>{{ detail.courseDescription }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="enrollmentDetails.length === 0">No details available.</div>
     </div>
   </div>
 </div>

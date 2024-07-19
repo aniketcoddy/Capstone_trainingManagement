@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 
-
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -10,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class UsersComponent implements OnInit {
   currentDate: Date = new Date();
-  users: any[] = []; // Assuming users array contains objects with fields: id, name, email, role
+  users: any[] = [];
   searchQuery: string = '';
   showAddUserPopup: boolean = false;
   showEditUserPopup: boolean = false;
@@ -40,10 +39,12 @@ export class UsersComponent implements OnInit {
     this.searchQuery = ''; // Clear the search query when loading all users
     this.http.get<any[]>(`${this.userServiceUrl}`)
       .subscribe(data => {
-        this.users = data.map(user => ({
-          ...user,
-          role: this.getRoleName(user.role)
-        }));
+        this.users = data
+          .filter(user => user.role !== 1) // Exclude Admin users
+          .map(user => ({
+            ...user,
+            role: this.getRoleName(user.role)
+          }));
       });
   }
 
@@ -53,10 +54,12 @@ export class UsersComponent implements OnInit {
     } else {
       this.http.get<any[]>(`${this.userServiceUrl}/search?query=${this.searchQuery}`)
         .subscribe(data => {
-          this.users = data.map(user => ({
-            ...user,
-            role: this.getRoleName(user.role)
-          }));
+          this.users = data
+            .filter(user => user.role !== 1) // Exclude Admin users
+            .map(user => ({
+              ...user,
+              role: this.getRoleName(user.role)
+            }));
         });
     }
   }

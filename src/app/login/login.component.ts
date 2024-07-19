@@ -10,10 +10,17 @@ import { AuthService } from '../services/auth.service';
 export class LoginComponent {
   email: string = '';
   password: string = '';
+  errorMessage: string = ''; // Property to store the error message
 
   constructor(private authService: AuthService, private router: Router) { }
 
   onSubmit() {
+    if (this.email.trim() === '' || this.password.trim() === '') {
+      // Optionally, show a message to the user that both fields are required
+      this.errorMessage = 'Both email and password are required.';
+      return;
+    }
+
     this.authService.login(this.email, this.password).subscribe(
       () => {
         const role = this.authService.getRole();
@@ -34,7 +41,7 @@ export class LoginComponent {
       },
       error => {
         console.error('Login failed', error);
-        // Handle login error (e.g., show error message)
+        this.errorMessage = 'Invalid email or password, or user is inactive.'; // Set error message based on API response
       }
     );
   }
